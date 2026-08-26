@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /new/
+Disallow: /blog/
+Disallow: /marketplace/
+Disallow: /include/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+Disallow: /offline.html
+Disallow: /consent.php
+
+Sitemap: https://xn--b1aekhbxcv8g.xn--p1ai/sitemap.xml

@@ -1,0 +1,15 @@
+<?php
+return [
+    'db'=>['host'=>'localhost','name'=>'TIMEWEB_DATABASE_NAME','user'=>'TIMEWEB_DATABASE_USER','password'=>'CHANGE_ME'],
+    'admin'=>[
+        'username'=>'admin',
+        // Создайте хеш: php -r "echo password_hash('ВАШ_ПАРОЛЬ', PASSWORD_DEFAULT), PHP_EOL;"
+        'password_hash'=>'PASTE_PASSWORD_HASH_HERE',
+        // Создайте ключ: php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
+        'audit_key'=>'PASTE_64_RANDOM_HEX_HERE',
+    ],
+    'mail'=>[
+        'recipient'=>'info@example.ru',
+        'from'=>'site@example.ru',
+    ],
+];

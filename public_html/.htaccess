@@ -1,0 +1,52 @@
+AddDefaultCharset utf-8
+AddType application/manifest+json .webmanifest
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Основной адрес сайта: HTTPS без www.
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteRule ^ https://xn--b1aekhbxcv8g.xn--p1ai%{REQUEST_URI} [R=301,L,NE]
+    RewriteCond %{THE_REQUEST} \s/+index\.php[?\s] [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+
+    # Старые и служебные материалы не публикуются.
+    RewriteRule ^(?:new|blog|marketplace)(?:/|$) - [R=404,L,NC]
+    RewriteRule ^(?:new|blog|marketplace|pay|index1|index4180425|index_old|index_old_21_08_22)\.php$ - [R=404,L,NC]
+    RewriteRule ^img/index\.php$ - [R=404,L,NC]
+    RewriteRule ^include/(?!send\.php$).*\.php$ - [R=404,L,NC]
+</IfModule>
+
+<FilesMatch "(?i)(^\.|_old|old_|backup|copy|desktop\.ini|thumbs\.db|\.(zip|7z|sql|ini|log|md|bak|dist)$)">
+    Require all denied
+</FilesMatch>
+
+<Files "sw.js">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Service-Worker-Allowed "/"
+    </IfModule>
+</Files>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+    Header always set Strict-Transport-Security "max-age=31536000"
+    # unsafe-eval оставлен только из-за требования JavaScript API Яндекс.Карт 2.1.
+    # unsafe-inline для script-src не используется; список внешних доменов сужен.
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; script-src 'self' 'unsafe-eval' https://api-maps.yandex.ru https://*.api-maps.yandex.ru https://suggest-maps.yandex.ru https://yastatic.net https://mc.yandex.ru; style-src 'self' 'unsafe-inline' https://api-maps.yandex.ru https://*.api-maps.yandex.ru https://yastatic.net; img-src 'self' data: blob: https://api-maps.yandex.ru https://*.api-maps.yandex.ru https://*.maps.yandex.net https://yastatic.net https://mc.yandex.ru; font-src 'self' data: https://yastatic.net; connect-src 'self' https://api-maps.yandex.ru https://*.api-maps.yandex.ru https://*.maps.yandex.net https://suggest-maps.yandex.ru https://search-maps.yandex.ru https://api.routing.yandex.net https://yastatic.net https://mc.yandex.ru; frame-src 'self' https://rutube.ru https://*.rutube.ru https://api-maps.yandex.ru https://*.api-maps.yandex.ru; worker-src 'self' blob: data: https://api-maps.yandex.ru https://*.api-maps.yandex.ru https://yastatic.net; manifest-src 'self'; media-src 'self' https://rutube.ru https://*.rutube.ru; upgrade-insecure-requests"
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+</IfModule>

@@ -1,0 +1,1366 @@
+{
+  "version": 1,
+  "generated_at": "2026-08-14T00:00:00+03:00",
+  "kiosks": [
+    {
+      "id": 1,
+      "machine_number": 58,
+      "address": "улица Ленсовета, 69к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.839628,
+      "longitude": 30.335911,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 2,
+      "machine_number": 14,
+      "address": "Варшавская улица, 61к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.85175,
+      "longitude": 30.313234,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 3,
+      "machine_number": 12,
+      "address": "Варшавская улица, 23к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.867865,
+      "longitude": 30.312371,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 4,
+      "machine_number": 31,
+      "address": "улица Димитрова, 9к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.846975,
+      "longitude": 30.383916,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 5,
+      "machine_number": 1,
+      "address": "улица Передовиков, 9к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.939754,
+      "longitude": 30.471692,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 6,
+      "machine_number": 15,
+      "address": "проспект Ветеранов, 108к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.832803,
+      "longitude": 30.205051,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 7,
+      "machine_number": 9,
+      "address": "Будапештская улица, 97к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.828953,
+      "longitude": 30.405973,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 8,
+      "machine_number": 47,
+      "address": "проспект Космонавтов, 65к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.836186,
+      "longitude": 30.358484,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 9,
+      "machine_number": 33,
+      "address": "улица Дыбенко, 17",
+      "area": "Санкт-Петербург",
+      "latitude": 59.902343,
+      "longitude": 30.465928,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 10,
+      "machine_number": 39,
+      "address": "улица Коллонтай, 28",
+      "area": "Санкт-Петербург",
+      "latitude": 59.922234,
+      "longitude": 30.478859,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 11,
+      "machine_number": 82,
+      "address": "улица Подвойского, 31к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.916083,
+      "longitude": 30.491171,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 12,
+      "machine_number": 85,
+      "address": "Пулковская улица, 6к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.839905,
+      "longitude": 30.350606,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 13,
+      "machine_number": 22,
+      "address": "Ленинградская область, Гатчина, исторический район Хохлово поле, улица Академика Константинова, 10",
+      "area": "Гатчина",
+      "latitude": 59.574787,
+      "longitude": 30.119882,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 14,
+      "machine_number": 42,
+      "address": "Всеволожский район, Колтушское сельское поселение, деревня Старая, Верхняя улица, 16",
+      "area": "Ленинградская область",
+      "latitude": 59.930558,
+      "longitude": 30.624585,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 15,
+      "machine_number": 16,
+      "address": "проспект Ветеранов, 122",
+      "area": "Санкт-Петербург",
+      "latitude": 59.832679,
+      "longitude": 30.176606,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 16,
+      "machine_number": 34,
+      "address": "улица Есенина, 3",
+      "area": "Санкт-Петербург",
+      "latitude": 60.033742,
+      "longitude": 30.329323,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 17,
+      "machine_number": 35,
+      "address": "Индустриальный проспект, 28",
+      "area": "Санкт-Петербург",
+      "latitude": 59.949009,
+      "longitude": 30.472236,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 18,
+      "machine_number": 44,
+      "address": "Комендантский проспект, 16к1",
+      "area": "Санкт-Петербург",
+      "latitude": 60.010122,
+      "longitude": 30.255328,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 19,
+      "machine_number": 56,
+      "address": "Ленинский проспект, 92",
+      "area": "Санкт-Петербург",
+      "latitude": 59.85634,
+      "longitude": 30.211458,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 20,
+      "machine_number": 67,
+      "address": "проспект Маршала Жукова, 33",
+      "area": "Санкт-Петербург",
+      "latitude": 59.856131,
+      "longitude": 30.226234,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 21,
+      "machine_number": 86,
+      "address": "Пулковская улица, 8к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.837641,
+      "longitude": 30.352305,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 22,
+      "machine_number": 94,
+      "address": "улица Сикейроса, 5к1",
+      "area": "Санкт-Петербург",
+      "latitude": 60.03439,
+      "longitude": 30.324253,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 23,
+      "machine_number": 103,
+      "address": "Хасанская улица, 18к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.937562,
+      "longitude": 30.490878,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 24,
+      "machine_number": 87,
+      "address": "Пушкинский район, посёлок Шушары, Пушкинская улица, 50",
+      "area": "Шушары",
+      "latitude": 59.80633,
+      "longitude": 30.377713,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 25,
+      "machine_number": 113,
+      "address": "проспект Энтузиастов, 40к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.952013,
+      "longitude": 30.481258,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 26,
+      "machine_number": 114,
+      "address": "Всеволожский район, Заневское городское поселение, городской посёлок Янино-1,улица Тюльпанов, 2к2",
+      "area": "Янино-1",
+      "latitude": 59.9528,
+      "longitude": 30.579747,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 27,
+      "machine_number": 60,
+      "address": "Лыжный переулок, 6",
+      "area": "Санкт-Петербург",
+      "latitude": 59.999091,
+      "longitude": 30.199868,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 28,
+      "machine_number": null,
+      "address": "Выборгский район, Первомайское сельское поселение, СПК Алакюль",
+      "area": "Алакюль",
+      "latitude": 60.225158,
+      "longitude": 29.917286,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 29,
+      "machine_number": 4,
+      "address": "Всеволожский район, Мурино, проспект Авиаторов Балтики, 13",
+      "area": "Мурино",
+      "latitude": 60.0563,
+      "longitude": 30.4414,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 30,
+      "machine_number": 5,
+      "address": "Всеволожский район, Мурино, проспект Авиаторов Балтики, 17",
+      "area": "Мурино",
+      "latitude": 60.058365,
+      "longitude": 30.442733,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 31,
+      "machine_number": 111,
+      "address": "Всеволожский район, Мурино, улица Шоссе в Лаврики, 89",
+      "area": "Мурино",
+      "latitude": 60.066372,
+      "longitude": 30.456879,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 32,
+      "machine_number": 108,
+      "address": "Всеволожский район, Мурино, улица Шоссе в Лаврики, 76",
+      "area": "Мурино",
+      "latitude": 60.061916,
+      "longitude": 30.455501,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 33,
+      "machine_number": 32,
+      "address": "улица Доблести, 28к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.851471,
+      "longitude": 30.179097,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 34,
+      "machine_number": 109,
+      "address": "Всеволожский район, Мурино, улица Шоссе в Лаврики, 83",
+      "area": "Мурино",
+      "latitude": 60.063032,
+      "longitude": 30.457405,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 35,
+      "machine_number": 65,
+      "address": "проспект Маршала Блюхера, 57",
+      "area": "Санкт-Петербург",
+      "latitude": 59.973946,
+      "longitude": 30.423152,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 36,
+      "machine_number": 57,
+      "address": "Ленинский проспект, 97к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.85207,
+      "longitude": 30.214053,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 37,
+      "machine_number": 68,
+      "address": "проспект Маршала Жукова, 54",
+      "area": "Санкт-Петербург",
+      "latitude": 59.841187,
+      "longitude": 30.207154,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 38,
+      "machine_number": 13,
+      "address": "Варшавская улица, 23к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.869682,
+      "longitude": 30.312209,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 39,
+      "machine_number": 18,
+      "address": "Витебский проспект, 51к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.849723,
+      "longitude": 30.362753,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 40,
+      "machine_number": 29,
+      "address": "улица Даниила Хармса, 8",
+      "area": "Санкт-Петербург",
+      "latitude": 60.034813,
+      "longitude": 30.450891,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 41,
+      "machine_number": 37,
+      "address": "Караваевская улица, 24",
+      "area": "Санкт-Петербург",
+      "latitude": 59.832917,
+      "longitude": 30.50727,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 42,
+      "machine_number": 41,
+      "address": "улица Коллонтай, 31к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.92227,
+      "longitude": 30.484291,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 43,
+      "machine_number": 49,
+      "address": "Крюкова улица, 10",
+      "area": "Санкт-Петербург",
+      "latitude": 59.962548,
+      "longitude": 30.420421,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 44,
+      "machine_number": 51,
+      "address": "улица Латышских Стрелков, 15к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.930496,
+      "longitude": 30.459454,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 45,
+      "machine_number": 59,
+      "address": "Пушкинский район, посёлок Шушары, территория Ленсоветовский, 21",
+      "area": "Шушары",
+      "latitude": 59.758687,
+      "longitude": 30.466961,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 46,
+      "machine_number": 61,
+      "address": "Лыжный переулок, 8",
+      "area": "Санкт-Петербург",
+      "latitude": 59.999043,
+      "longitude": 30.195662,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 47,
+      "machine_number": 63,
+      "address": "Малая Бухарестская улица, 10",
+      "area": "Санкт-Петербург",
+      "latitude": 59.849967,
+      "longitude": 30.414304,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 48,
+      "machine_number": 64,
+      "address": "Малая Бухарестская улица, 3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.84979,
+      "longitude": 30.410031,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 49,
+      "machine_number": 69,
+      "address": "проспект Маршала Жукова, 68",
+      "area": "Санкт-Петербург",
+      "latitude": 59.833794,
+      "longitude": 30.198895,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 50,
+      "machine_number": 75,
+      "address": "проспект Наставников, 17",
+      "area": "Санкт-Петербург",
+      "latitude": 59.942884,
+      "longitude": 30.491212,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 51,
+      "machine_number": 81,
+      "address": "улица Подвойского, 17к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.912186,
+      "longitude": 30.474767,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 52,
+      "machine_number": 88,
+      "address": "проспект Пятилеток, 8",
+      "area": "Санкт-Петербург",
+      "latitude": 59.921946,
+      "longitude": 30.458784,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 53,
+      "machine_number": 93,
+      "address": "Северный проспект, 6",
+      "area": "Санкт-Петербург",
+      "latitude": 60.031015,
+      "longitude": 30.325923,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 54,
+      "machine_number": 104,
+      "address": "проспект Художников, 3к2",
+      "area": "Санкт-Петербург",
+      "latitude": 60.032643,
+      "longitude": 30.34734,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 55,
+      "machine_number": 105,
+      "address": "Шлиссельбургский проспект, 18",
+      "area": "Санкт-Петербург",
+      "latitude": 59.838395,
+      "longitude": 30.504897,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 56,
+      "machine_number": 110,
+      "address": "Всеволожский район, Мурино, улица Шоссе в Лаврики, 87",
+      "area": "Мурино",
+      "latitude": 60.065073,
+      "longitude": 30.457796,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 57,
+      "machine_number": 112,
+      "address": "проспект Энтузиастов, 40к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.950553,
+      "longitude": 30.485594,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 58,
+      "machine_number": 98,
+      "address": "улица Стойкости, 26к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.826185,
+      "longitude": 30.200323,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 59,
+      "machine_number": 46,
+      "address": "улица Корнея Чуковского, 7к4",
+      "area": "Санкт-Петербург",
+      "latitude": 60.028734,
+      "longitude": 30.459032,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 60,
+      "machine_number": 8,
+      "address": "Будапештская улица, 48",
+      "area": "Санкт-Петербург",
+      "latitude": 59.855732,
+      "longitude": 30.381224,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 61,
+      "machine_number": 99,
+      "address": "улица Тамбасова, 13к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.832928,
+      "longitude": 30.153965,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 62,
+      "machine_number": 79,
+      "address": "улица Партизана Германа, 7",
+      "area": "Санкт-Петербург",
+      "latitude": 59.84088,
+      "longitude": 30.172832,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 63,
+      "machine_number": 74,
+      "address": "Наличная улица, 48",
+      "area": "Санкт-Петербург",
+      "latitude": 59.954139,
+      "longitude": 30.234107,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 64,
+      "machine_number": 73,
+      "address": "Наличная улица, 36к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.946356,
+      "longitude": 30.228098,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 65,
+      "machine_number": 17,
+      "address": "проспект Ветеранов, 76",
+      "area": "Санкт-Петербург",
+      "latitude": 59.833345,
+      "longitude": 30.219057,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 66,
+      "machine_number": 95,
+      "address": "улица Симонова, 4",
+      "area": "Санкт-Петербург",
+      "latitude": 60.057618,
+      "longitude": 30.323364,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 67,
+      "machine_number": 7,
+      "address": "Будапештская улица, 17к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.865542,
+      "longitude": 30.370832,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 68,
+      "machine_number": 97,
+      "address": "улица Солдата Корзуна, 58 к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.827458,
+      "longitude": 30.223222,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 69,
+      "machine_number": 70,
+      "address": "улица Маршала Тухачевского 27/2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.969718,
+      "longitude": 30.425451,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 70,
+      "machine_number": 55,
+      "address": "Маршала Казакова,36",
+      "area": "Санкт-Петербург",
+      "latitude": 59.859221,
+      "longitude": 30.214566,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 71,
+      "machine_number": 89,
+      "address": "улица Савушкина, 140",
+      "area": "Санкт-Петербург",
+      "latitude": 59.989804,
+      "longitude": 30.191228,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 72,
+      "machine_number": 38,
+      "address": "улица Карпинского, 33",
+      "area": "Санкт-Петербург",
+      "latitude": 60.011757,
+      "longitude": 30.429807,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 73,
+      "machine_number": 45,
+      "address": "улица Композиторов, 29к1",
+      "area": "Санкт-Петербург",
+      "latitude": 60.059665,
+      "longitude": 30.319991,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 74,
+      "machine_number": 66,
+      "address": "улица Маршала Говорова, 12к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.878728,
+      "longitude": 30.266478,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 75,
+      "machine_number": 90,
+      "address": "Западный проезд, 14 (пос. имени Свердлова)",
+      "area": "Санкт-Петербург",
+      "latitude": 59.801093,
+      "longitude": 30.632579,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 76,
+      "machine_number": 96,
+      "address": "Советский проспект, 16",
+      "area": "Санкт-Петербург",
+      "latitude": 59.830808,
+      "longitude": 30.537964,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 77,
+      "machine_number": 106,
+      "address": "Шлиссельбургский проспект, 32",
+      "area": "Санкт-Петербург",
+      "latitude": 59.834391,
+      "longitude": 30.514591,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 78,
+      "machine_number": 101,
+      "address": "улица Тамбасова, 7",
+      "area": "Санкт-Петербург",
+      "latitude": 59.838328,
+      "longitude": 30.157238,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 79,
+      "machine_number": 53,
+      "address": "улица Манчестерская, 4",
+      "area": "Санкт-Петербург",
+      "latitude": 60.011751,
+      "longitude": 30.327403,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 80,
+      "machine_number": 54,
+      "address": "улица Обуховсой Обороны,243",
+      "area": "Санкт-Петербург",
+      "latitude": 59.862417,
+      "longitude": 30.473396,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 81,
+      "machine_number": 28,
+      "address": "Гранитная улица, 54к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.928419,
+      "longitude": 30.428269,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 82,
+      "machine_number": 72,
+      "address": "Московское шоссе, 286",
+      "area": "Санкт-Петербург",
+      "latitude": 59.755474,
+      "longitude": 30.477024,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 83,
+      "machine_number": 80,
+      "address": "Первомайская улица, 16",
+      "area": "Санкт-Петербург",
+      "latitude": 59.807311,
+      "longitude": 30.374145,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 84,
+      "machine_number": 6,
+      "address": "улица Архитектора Белова, 6к1",
+      "area": "Санкт-Петербург",
+      "latitude": 60.071195,
+      "longitude": 30.320245,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 85,
+      "machine_number": 11,
+      "address": "Валдайская улица, 6к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.802694,
+      "longitude": 30.377316,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 86,
+      "machine_number": 27,
+      "address": "Гражданский проспект, 84",
+      "area": "Санкт-Петербург",
+      "latitude": 60.01609,
+      "longitude": 30.399512,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 87,
+      "machine_number": 48,
+      "address": "Краснопутиловская улица, 111",
+      "area": "Санкт-Петербург",
+      "latitude": 59.84873,
+      "longitude": 30.307519,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 88,
+      "machine_number": null,
+      "address": "Лабораторный проспект, 23",
+      "area": "Санкт-Петербург",
+      "latitude": 59.982154,
+      "longitude": 30.387329,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 89,
+      "machine_number": 71,
+      "address": "Московское шоссе, 26к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.834688,
+      "longitude": 30.340768,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 90,
+      "machine_number": 92,
+      "address": "Светлановский проспект, 54",
+      "area": "Санкт-Петербург",
+      "latitude": 60.034614,
+      "longitude": 30.393314,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 91,
+      "machine_number": 21,
+      "address": "улица Ворошилова, 31к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.932863,
+      "longitude": 30.4622,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 92,
+      "machine_number": 3,
+      "address": "2-й Муринский проспект, 39",
+      "area": "Санкт-Петербург",
+      "latitude": 59.999685,
+      "longitude": 30.351797,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 93,
+      "machine_number": 100,
+      "address": "улица Тамбасова, 28",
+      "area": "Санкт-Петербург",
+      "latitude": 59.829646,
+      "longitude": 30.156874,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 94,
+      "machine_number": 30,
+      "address": "улица Десантников, 24",
+      "area": "Санкт-Петербург",
+      "latitude": 59.851194,
+      "longitude": 30.199374,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 95,
+      "machine_number": 20,
+      "address": "улица Ворошилова, 25к3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.931187,
+      "longitude": 30.457886,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 96,
+      "machine_number": 2,
+      "address": "2-й Муринский проспект, 14",
+      "area": "Санкт-Петербург",
+      "latitude": 60.002396,
+      "longitude": 30.337653,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 97,
+      "machine_number": 10,
+      "address": "переулок Челиева, 13",
+      "area": "Санкт-Петербург",
+      "latitude": 59.889627,
+      "longitude": 30.476839,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 98,
+      "machine_number": 19,
+      "address": "Вишерская улица, 1к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.810762,
+      "longitude": 30.370466,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 99,
+      "machine_number": 24,
+      "address": "улица Главная,21",
+      "area": "Санкт-Петербург",
+      "latitude": 60.055566,
+      "longitude": 30.467552,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 100,
+      "machine_number": 26,
+      "address": "Соборная улица, 29",
+      "area": "Санкт-Петербург",
+      "latitude": 59.564226,
+      "longitude": 30.13293,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 101,
+      "machine_number": 23,
+      "address": "Рощинская улица, 18Б",
+      "area": "Санкт-Петербург",
+      "latitude": 59.578943,
+      "longitude": 30.12768,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 102,
+      "machine_number": 25,
+      "address": "Маршала Блюхера,42",
+      "area": "Санкт-Петербург",
+      "latitude": 59.975801,
+      "longitude": 30.423532,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 103,
+      "machine_number": 36,
+      "address": "Искровский проспект, 12",
+      "area": "Санкт-Петербург",
+      "latitude": 59.911104,
+      "longitude": 30.462373,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 104,
+      "machine_number": 40,
+      "address": "улица Коллонтай, 28",
+      "area": "Санкт-Петербург",
+      "latitude": 59.923839,
+      "longitude": 30.481577,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 105,
+      "machine_number": 43,
+      "address": "Школьный переулок, 12",
+      "area": "Санкт-Петербург",
+      "latitude": 59.93337,
+      "longitude": 30.643926,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 106,
+      "machine_number": 50,
+      "address": "Лабораторный проспект, 23",
+      "area": "Санкт-Петербург",
+      "latitude": 59.981448,
+      "longitude": 30.386772,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 107,
+      "machine_number": 52,
+      "address": "улица Латышских Стрелков, 5к2",
+      "area": "Санкт-Петербург",
+      "latitude": 59.928496,
+      "longitude": 30.469964,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 108,
+      "machine_number": 62,
+      "address": "Малая Балканская улица, 20",
+      "area": "Санкт-Петербург",
+      "latitude": 59.834374,
+      "longitude": 30.382028,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 109,
+      "machine_number": 76,
+      "address": "Новочеркасский проспект, 10",
+      "area": "Санкт-Петербург",
+      "latitude": 59.9368,
+      "longitude": 30.408359,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 110,
+      "machine_number": 77,
+      "address": "Оранжевая улица, 3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.949248,
+      "longitude": 30.578795,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 111,
+      "machine_number": 83,
+      "address": "улица Маршала Блюхера, 11к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.979482,
+      "longitude": 30.377322,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 112,
+      "machine_number": 84,
+      "address": "проспект Просвещения, 46",
+      "area": "Санкт-Петербург",
+      "latitude": 60.050177,
+      "longitude": 30.3515,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 113,
+      "machine_number": 102,
+      "address": "улица Уточкина, 7",
+      "area": "Санкт-Петербург",
+      "latitude": 60.012202,
+      "longitude": 30.264006,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 114,
+      "machine_number": 107,
+      "address": "улица Шоссе в Лаврики, 63",
+      "area": "Санкт-Петербург",
+      "latitude": 60.062742,
+      "longitude": 30.460741,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 115,
+      "machine_number": 78,
+      "address": "ул. Тореза, 112",
+      "area": "Санкт-Петербург",
+      "latitude": 60.022118,
+      "longitude": 30.326972,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 116,
+      "machine_number": 91,
+      "address": "Западный проезд, 15к1 (пос. имени Свердлова)",
+      "area": "Санкт-Петербург",
+      "latitude": 59.799186,
+      "longitude": 30.631439,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 117,
+      "machine_number": 128,
+      "address": "Бухареская, 146к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.8331,
+      "longitude": 30.420255,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 118,
+      "machine_number": 120,
+      "address": "Звёздная 9",
+      "area": "Санкт-Петербург",
+      "latitude": 59.834319,
+      "longitude": 30.359974,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 119,
+      "machine_number": 125,
+      "address": "Варшавская 65",
+      "area": "Санкт-Петербург",
+      "latitude": 59.847623,
+      "longitude": 30.313859,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 120,
+      "machine_number": 117,
+      "address": "Наставников 3",
+      "area": "Санкт-Петербург",
+      "latitude": 59.936269,
+      "longitude": 30.489551,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 121,
+      "machine_number": 124,
+      "address": "Пулковское ш.18",
+      "area": "Санкт-Петербург",
+      "latitude": 59.828575,
+      "longitude": 30.32581,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 122,
+      "machine_number": 116,
+      "address": "Звёздная 16",
+      "area": "Санкт-Петербург",
+      "latitude": 59.835417,
+      "longitude": 30.365405,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 123,
+      "machine_number": 119,
+      "address": "Кудрово Ленинградская 1",
+      "area": "Кудрово",
+      "latitude": 59.912147,
+      "longitude": 30.504495,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 124,
+      "machine_number": 122,
+      "address": "Бухареская 72",
+      "area": "Санкт-Петербург",
+      "latitude": 59.87667,
+      "longitude": 30.376231,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 125,
+      "machine_number": 123,
+      "address": "Звёздная 8",
+      "area": "Санкт-Петербург",
+      "latitude": 59.834188,
+      "longitude": 30.350877,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 126,
+      "machine_number": 127,
+      "address": "Пловдивская 9",
+      "area": "Санкт-Петербург",
+      "latitude": 59.841037,
+      "longitude": 30.388526,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 127,
+      "machine_number": 118,
+      "address": "Подвойского 38",
+      "area": "Санкт-Петербург",
+      "latitude": 59.916945,
+      "longitude": 30.490054,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 128,
+      "machine_number": 115,
+      "address": "Коллонтай 41А",
+      "area": "Санкт-Петербург",
+      "latitude": 59.925128,
+      "longitude": 30.495885,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 129,
+      "machine_number": 121,
+      "address": "Славы 16",
+      "area": "Санкт-Петербург",
+      "latitude": 59.857492,
+      "longitude": 30.383901,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 130,
+      "machine_number": 126,
+      "address": "Бухареская 118",
+      "area": "Санкт-Петербург",
+      "latitude": 59.846527,
+      "longitude": 30.406315,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 131,
+      "machine_number": 133,
+      "address": "Крымская 6",
+      "area": "Санкт-Петербург",
+      "latitude": 59.987022,
+      "longitude": 30.651192,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 132,
+      "machine_number": 134,
+      "address": "Магистральная 11",
+      "area": "Санкт-Петербург",
+      "latitude": 60.007139,
+      "longitude": 30.607619,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 133,
+      "machine_number": 129,
+      "address": "Пискаревский 37",
+      "area": "Санкт-Петербург",
+      "latitude": 59.977552,
+      "longitude": 30.420504,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 134,
+      "machine_number": 130,
+      "address": "Кутышева 9 к1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.622209,
+      "longitude": 30.171945,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 135,
+      "machine_number": 131,
+      "address": "Столичная 14",
+      "area": "Санкт-Петербург",
+      "latitude": 59.904191,
+      "longitude": 30.516719,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    },
+    {
+      "id": 136,
+      "machine_number": 132,
+      "address": "Австрийская 4-1",
+      "area": "Санкт-Петербург",
+      "latitude": 59.902141,
+      "longitude": 30.510682,
+      "status": "active",
+      "schedule": "Круглосуточно"
+    }
+  ]
+}

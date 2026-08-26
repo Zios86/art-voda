@@ -1,0 +1,7 @@
+# Папка хранит только изображения: выполнение любых загруженных скриптов запрещено.
+Options -Indexes
+RemoveHandler .php .phtml .phar
+RemoveType .php .phtml .phar
+<FilesMatch "\.(php|phtml|phar|cgi|pl|py|sh)$">
+  Require all denied
+</FilesMatch>

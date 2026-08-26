@@ -1,0 +1,15 @@
+*{box-sizing:border-box}
+body{min-height:100vh;margin:0;padding:24px;background:#eaf7fb;color:#15384c;font:16px/1.5 system-ui,sans-serif}
+.shell{width:min(760px,100%);margin:auto}
+.head{padding:25px;border-radius:22px;background:#fff;box-shadow:0 18px 50px #0b374f1f}
+.head img{width:min(360px,100%);height:auto}
+.head h1{margin:20px 0 8px;color:#092f4a;font-size:30px}
+.head input{width:100%;padding:13px;border:1px solid #9db8c5;border-radius:12px;font:inherit}
+.head a{display:inline-block;margin-top:15px;color:#147ca8;font-weight:700}
+.list{display:grid;gap:10px;margin-top:16px}
+.item{padding:16px;border-radius:16px;background:#fff}
+.item strong,.item span{display:block}
+.item span{margin-top:5px;color:#5d7380;font-size:14px}
+.status{color:#287346!important;font-weight:700}
+.empty{text-align:center}
+/* Самодостаточный интерфейс PWA без сети: список точек и локальный поиск. */

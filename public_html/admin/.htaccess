@@ -1,0 +1,4 @@
+# Дополнительная строгая CSP применяется только к административным страницам.
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src 'self'; worker-src 'none'; manifest-src 'none'"
+</IfModule>

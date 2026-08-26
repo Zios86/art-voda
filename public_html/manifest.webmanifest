@@ -1,0 +1,19 @@
+{
+  "name": "Киосквода — карта автоматов",
+  "short_name": "Киосквода",
+  "description": "Поиск ближайших автоматов с артезианской водой",
+  "lang": "ru",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#eaf7fb",
+  "theme_color": "#092f4a",
+  "icons": [
+    {"src": "/img/pwa-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "/img/pwa-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Найти автомат", "short_name": "Карта", "url": "/#marketplace"},
+    {"name": "Сообщить о проблеме", "short_name": "Обращение", "url": "/contact.php"}
+  ]
+}

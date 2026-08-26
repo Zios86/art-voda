@@ -1,0 +1,30 @@
+*,*::before,*::after{box-sizing:border-box}
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+body{margin:0}
+main,header,footer,nav,section{display:block}
+a{background-color:transparent}
+img{border:0}
+button,input,textarea{font:inherit}
+.container,.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:15px;padding-left:15px}
+.row{display:flex;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
+[class*="col-"]{position:relative;min-height:1px;padding-right:15px;padding-left:15px}
+.col-xs-3{width:25%}.col-xs-8{width:66.666667%}.col-xs-9{width:75%}.col-xs-12{width:100%}
+.col-xs-offset-0{margin-left:0}.col-xs-offset-2{margin-left:16.666667%}
+.img-responsive{display:block;max-width:100%;height:auto}
+.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-justify{text-align:justify}
+@media (min-width:768px){
+  .container{max-width:750px}
+  .col-sm-3{width:25%}.col-sm-6{width:50%}.col-sm-8{width:66.666667%}.col-sm-9{width:75%}.col-sm-12{width:100%}
+  .col-sm-offset-0{margin-left:0}.col-sm-offset-2{margin-left:16.666667%}
+}
+@media (min-width:992px){
+  .container{max-width:970px}
+  .col-md-2{width:16.666667%}.col-md-4{width:33.333333%}.col-md-5{width:41.666667%}.col-md-6{width:50%}.col-md-7{width:58.333333%}.col-md-8{width:66.666667%}.col-md-10{width:83.333333%}.col-md-12{width:100%}
+  .col-md-offset-0{margin-left:0}.col-md-offset-2{margin-left:16.666667%}
+}
+@media (min-width:1200px){
+  .container{max-width:1170px}
+  .col-lg-2{width:16.666667%}.col-lg-4{width:33.333333%}.col-lg-5{width:41.666667%}.col-lg-6{width:50%}.col-lg-7{width:58.333333%}.col-lg-8{width:66.666667%}.col-lg-10{width:83.333333%}.col-lg-12{width:100%}
+  .col-lg-offset-0{margin-left:0}.col-lg-offset-2{margin-left:16.666667%}
+}
+/* Базовая сетка контейнеров и колонок для старых внутренних страниц. */

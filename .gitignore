@@ -1,0 +1,33 @@
+# Реальная конфигурация и локальные секреты
+private/config.php
+.env
+.env.*
+!.env.example
+
+# Runtime, логи и резервные копии
+private/runtime/
+runtime/
+logs/
+backups/
+**/backups/
+*.log
+*.bak
+*.tmp
+
+# Пользовательские фотографии: сохраняем только защитные правила каталога
+public_html/uploads/kiosks/*
+!public_html/uploads/kiosks/.htaccess
+!public_html/uploads/kiosks/.gitkeep
+
+# Готовые сборки и архивы
+release/
+*.zip
+
+# Локальное окружение и редакторы
+.osp/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
