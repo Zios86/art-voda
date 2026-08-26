@@ -5,10 +5,10 @@
 ## Текущее состояние
 
 - Версия исходников: v17 Admin Suite.
-- Окружение: Apache, PHP 8.4, MySQL 8.4.
+- Окружение: Apache, PHP 8.4, MySQL 8.0.
 - Рабочая ОС разработчика: Windows 10/11 с Open Server Panel.
 - Хостинг: обычный Timeweb.
-- Статус v17: исходники опубликованы для разработки; перед рабочим развёртыванием нужно закрыть блокеры из [PROJECT_STATUS.md](PROJECT_STATUS.md) и провести smoke-тест.
+- Статус: исходники опубликованы для разработки; перед рабочим развёртыванием нужно закрыть блокеры из [PROJECT_STATUS.md](PROJECT_STATUS.md) и провести smoke-тест.
 
 ## Быстрый старт
 
@@ -33,5 +33,9 @@ GitHub Pages не выполняет PHP и не предоставляет MySQ
 
 ## Документация
 
-Точка входа для Claude — [CLAUDE.md](CLAUDE.md). Архитектура, карта файлов, безопасность, тестирование, backlog и правила постоянного обновления находятся в каталоге [docs](docs).
-
+- [CLAUDE.md](CLAUDE.md) — правила работы для Claude (Anthropic)
+- [AGENTS.md](AGENTS.md) — правила работы для ChatGPT и агентов OpenAI
+- [docs/](docs/) — архитектура, карта файлов, безопасность, тестирование, backlog
+- [PROJECT_STATUS.md](PROJECT_STATUS.md) — текущее состояние и блокеры
+- [TIMEWEB_INSTALL.md](TIMEWEB_INSTALL.md) — установка на хостинг
+- [CHANGELOG.md](CHANGELOG.md) — журнал изменений
