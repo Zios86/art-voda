@@ -39,4 +39,6 @@
 - пакетные координаты журналируются только для изменённых точек;
 - CSV отклоняет дубли номеров и ссылки на отсутствующие фотографии;
 - добавлены GitHub Actions, Gitleaks, CodeQL и Dependabot;
-- PHP/MySQL/Apache и браузерные сценарии ещё требуют проверки на Open Server.
+- коммит исправлений: `daf27b220f0cf1db3c2625404be666f85b77a912`;
+- GitHub Actions подтвердил PHP lint, JavaScript, JSON, Gitleaks и CodeQL;
+- MySQL/Apache и браузерные сценарии ещё требуют проверки на Open Server.

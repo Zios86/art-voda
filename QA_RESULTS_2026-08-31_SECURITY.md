@@ -1,6 +1,6 @@
 # QA: исправления безопасности 31.08.2026
 
-Проверяемая основа: GitHub HEAD `f4c536e5ebfee3cf7c1e54ca9ce878f23b9ff745` и локальный патч v18-dev.
+Проверяемый коммит: `daf27b220f0cf1db3c2625404be666f85b77a912`.
 
 ## Пройдено локально
 
@@ -12,13 +12,15 @@
 - поиск распространённых форматов приватных ключей, GitHub-токенов и AWS-ключей;
 - 96 из 96 контрольных сумм `SHA256SUMS`.
 
-## Ожидается после публикации коммита
+## Пройдено в GitHub Actions
 
-- GitHub Actions: PHP lint, JavaScript, JSON, Gitleaks и CodeQL JavaScript.
+- PHP lint всех PHP-файлов;
+- JavaScript и JSON;
+- Gitleaks: опубликованных секретов не найдено;
+- CodeQL JavaScript: workflow завершён успешно.
 
 ## Не проверено в этой среде
 
-- PHP lint: интерпретатор PHP отсутствует;
 - MySQL и миграции;
 - Apache `.htaccess` и CSP в браузере;
 - реальный rate limit повторного пароля;
