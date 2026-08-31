@@ -66,12 +66,13 @@ foreach ($versions as $version) {
             }
         ?>
             <article class="history-card">
-                <header><div><strong><?=app_h(date('d.m.Y H:i', strtotime((string) $version['created_at'])))?></strong><small><?=app_h((string) $version['admin_name'])?> · <?=app_h((string) $version['action'])?></small></div><?php if ($index > 0): ?><form action="/admin/rollback.php" method="post" onsubmit="return confirm('Вернуть данные этой версии? Перед откатом будет создана резервная копия.');"><input type="hidden" name="csrf" value="<?=app_h(app_csrf())?>"><input type="hidden" name="version_id" value="<?=(int) $version['id']?>"><input type="password" name="admin_password" required autocomplete="current-password" placeholder="Пароль"><button type="submit" class="secondary">Вернуть эту версию</button></form><?php endif; ?></header>
+                <header><div><strong><?=app_h(date('d.m.Y H:i', strtotime((string) $version['created_at'])))?></strong><small><?=app_h((string) $version['admin_name'])?> · <?=app_h((string) $version['action'])?></small></div><?php if ($index > 0): ?><form action="/admin/rollback.php" method="post" data-confirm="Вернуть данные этой версии? Перед откатом будет создана резервная копия."><input type="hidden" name="csrf" value="<?=app_h(app_csrf())?>"><input type="hidden" name="version_id" value="<?=(int) $version['id']?>"><input type="password" name="admin_password" required autocomplete="current-password" placeholder="Пароль"><button type="submit" class="secondary">Вернуть эту версию</button></form><?php endif; ?></header>
                 <dl><?php foreach ($changes as $label => [$old, $value]): ?><div><dt><?=app_h($label)?></dt><?php if ($previous !== []): ?><dd><del><?=app_h($old !== '' ? $old : 'не заполнено')?></del><span aria-hidden="true">→</span><ins><?=app_h($value !== '' ? $value : 'не заполнено')?></ins></dd><?php else: ?><dd><ins><?=app_h($value !== '' ? $value : 'не заполнено')?></ins></dd><?php endif; ?></div><?php endforeach; ?></dl>
             </article>
         <?php endforeach; ?>
         </div>
     <?php endif; ?>
 </main>
+<script src="/js/admin-confirm.js?v=20260831-1" defer></script>
 </body>
 </html>

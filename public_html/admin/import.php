@@ -63,7 +63,7 @@ $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', (string) $header[0]);
 $expected = ['Номер','Адрес','Город/район','Широта','Долгота','Режим работы'];
 if (array_slice($header, 0, 6) !== $expected) { http_response_code(422); exit('Используйте CSV, скачанный из этой админки.'); }
 
-$rows = []; $errors = []; $line = 1;
+$rows = []; $errors = []; $seenNumbers = []; $line = 1;
 while (($values = fgetcsv($handle, 0, ';', '"', '')) !== false) {
     $line++;
     if (count($values) < 6) { $errors[]=['line'=>$line,'message'=>'Недостаточно колонок']; continue; }
@@ -74,8 +74,11 @@ while (($values = fgetcsv($handle, 0, ';', '"', '')) !== false) {
             'metro'=>$values[6] ?? '', 'landmark'=>$values[7] ?? '',
         ]);
         if ($data['number'] === null) throw new InvalidArgumentException('Не указан номер автомата');
+        if (isset($seenNumbers[$data['number']])) throw new InvalidArgumentException('Номер автомата уже указан в строке ' . $seenNumbers[$data['number']]);
         $photo = trim((string) ($values[8] ?? ''));
         if ($photo !== '' && preg_match('~^/uploads/kiosks/kiosk-[a-f0-9]{24}\.(?:jpg|png|webp)$~', $photo) !== 1) throw new InvalidArgumentException('Недопустимый путь фотографии');
+        if ($photo !== '' && !is_file(dirname(__DIR__) . $photo)) throw new InvalidArgumentException('Файл фотографии не найден на сервере');
+        $seenNumbers[$data['number']] = $line;
         $rows[] = $data + ['photo_url'=>$photo,'line'=>$line];
     } catch (InvalidArgumentException $error) {
         $errors[]=['line'=>$line,'message'=>$error->getMessage()];

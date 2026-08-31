@@ -42,6 +42,42 @@ function app_kiosk_clear_api_cache(): void
     }
 }
 
+function app_kiosk_photo_reference(PDO $pdo, string $photoUrl): ?string
+{
+    $current = $pdo->prepare('SELECT 1 FROM kiosks WHERE photo_url = ? LIMIT 1');
+    $current->execute([$photoUrl]);
+    if ($current->fetchColumn()) return 'Фотография используется текущей карточкой.';
+
+    $history = $pdo->prepare('SELECT 1 FROM kiosk_versions WHERE snapshot_json LIKE ? LIMIT 1');
+    $history->execute(['%' . $photoUrl . '%']);
+    if ($history->fetchColumn()) return 'Фотография используется в истории карточки.';
+
+    $backupDirectory = dirname(__DIR__, 2) . '/private/runtime/backups';
+    foreach (glob($backupDirectory . '/kiosks-before-*.json') ?: [] as $backup) {
+        $body = file_get_contents($backup);
+        if (is_string($body) && str_contains($body, $photoUrl)) {
+            return 'Фотография используется резервной копией.';
+        }
+    }
+    return null;
+}
+
+function app_kiosk_trash_photo(string $source, string $name): void
+{
+    $directory = dirname(__DIR__, 2) . '/private/runtime/photo-trash';
+    if (!is_dir($directory) && !mkdir($directory, 0700, true) && !is_dir($directory)) {
+        throw new RuntimeException('Photo trash is unavailable');
+    }
+    foreach (glob($directory . '/*') ?: [] as $oldFile) {
+        if (is_file($oldFile) && filemtime($oldFile) !== false && filemtime($oldFile) < time() - 30 * 86400) {
+            if (!unlink($oldFile)) error_log('kioskvoda_admin photo_trash_cleanup_failed');
+        }
+    }
+    $destination = $directory . '/' . date('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '-' . $name;
+    if (!rename($source, $destination)) throw new RuntimeException('Photo move to trash failed');
+    @chmod($destination, 0600);
+}
+
 function app_kiosk_store_version(PDO $pdo, int $kioskId, string $action): void
 {
     // История хранит только поля карточки; служебные секреты и IP в снимок не попадают.
@@ -144,14 +180,21 @@ function app_kiosk_store_photo(array $file, string $currentPhoto): string
     if (!function_exists($loaders[$mime])) {
         throw new RuntimeException('Сервер не поддерживает обработку выбранного формата фотографии.');
     }
+
+    $scale = min(1, 2000 / $width, 2000 / $height);
+    $targetWidth = max(1, (int) round($width * $scale));
+    $targetHeight = max(1, (int) round($height * $scale));
+    $requiredMemory = (int) (($width * $height * 5) + ($targetWidth * $targetHeight * 5) + 8 * 1024 * 1024);
+    $memoryLimit = app_kiosk_ini_bytes((string) ini_get('memory_limit'));
+    if ($memoryLimit !== PHP_INT_MAX && $requiredMemory > max(0, $memoryLimit - memory_get_usage(true))) {
+        throw new InvalidArgumentException('Фотография слишком большая для памяти сервера. Уменьшите её разрешение.');
+    }
+
     $source = @$loaders[$mime]($temporary);
     if ($source === false) {
         throw new InvalidArgumentException('Не удалось безопасно прочитать фотографию.');
     }
 
-    $scale = min(1, 2000 / $width, 2000 / $height);
-    $targetWidth = max(1, (int) round($width * $scale));
-    $targetHeight = max(1, (int) round($height * $scale));
     $target = imagecreatetruecolor($targetWidth, $targetHeight);
     if ($target === false) {
         imagedestroy($source);
@@ -188,6 +231,20 @@ function app_kiosk_store_photo(array $file, string $currentPhoto): string
     }
     chmod($destination, 0644);
     return '/uploads/kiosks/' . $name;
+}
+
+function app_kiosk_ini_bytes(string $value): int
+{
+    $value = trim($value);
+    if ($value === '' || $value === '-1') return PHP_INT_MAX;
+    $unit = strtolower(substr($value, -1));
+    $number = (float) $value;
+    return match ($unit) {
+        'g' => (int) ($number * 1024 * 1024 * 1024),
+        'm' => (int) ($number * 1024 * 1024),
+        'k' => (int) ($number * 1024),
+        default => (int) $number,
+    };
 }
 
 function app_kiosk_form_data(array $input): array

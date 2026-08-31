@@ -20,7 +20,12 @@
 private/
   ├─ конфигурация и общие серверные функции
   ├─ schema.sql и миграции
-  └─ runtime/backup/logs (уточнить фактические пути)
+  └─ runtime/
+       ├─ backups — закрытые JSON-копии базы
+       ├─ photo-trash — корзина фотографий на 30 дней
+       ├─ admin-reauth-attempts.json — лимит повторного пароля
+       ├─ admin-sessions.json — реестр активных входов
+       └─ security-alerts.json/security.log — cooldown и журнал безопасности
 ```
 
 ## Границы публикации
@@ -41,7 +46,10 @@ Document root должен указывать на `public_html`. Каталог
 
 При ошибке выполняется rollback; браузерный черновик нельзя удалять до подтверждённого успеха.
 
+## Проверки GitHub
+
+`.github/workflows/security.yml` запускает синтаксические проверки PHP/JavaScript/JSON, Gitleaks и CodeQL для JavaScript. `.github/dependabot.yml` следит за версиями GitHub Actions. Эти проверки дополняют, но не заменяют Open Server и тестовый Timeweb.
+
 ## PWA и кеш
 
 Service Worker не должен кешировать админку, приватные ответы или персональные данные. Версии ресурсов в `sw.js`, HTML и URL должны совпадать. После изменения кешируемого CSS/JS меняется версия кеша и проверяется офлайн-режим.
-

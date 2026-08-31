@@ -7,6 +7,8 @@
 | `README.md` | входная страница репозитория | держать статус и быстрый старт актуальными |
 | `.gitignore` | защита от публикации локальных данных | не ослаблять исключения секретов, backup и uploads |
 | `.gitattributes` | единые окончания строк и бинарные типы | учитывать Windows/Open Server |
+| `.github/workflows/security.yml` | CI безопасности | PHP/JS/JSON, Gitleaks и CodeQL |
+| `.github/dependabot.yml` | обновление GitHub Actions | еженедельные pull request |
 | `public_html/` | корень сайта | единственный web root |
 | `public_html/index.php` | главная страница | число точек не хранить вручную |
 | `public_html/api/` | публичный API | экранирование, корректный JSON, кеш |
@@ -14,6 +16,7 @@
 | `public_html/admin/batch.php` | пакетные изменения | менять только фактически изменённые ID |
 | `public_html/css/` | стили | избегать новых дублей |
 | `public_html/js/` | клиентская логика | без inline JS при строгой CSP |
+| `public_html/js/admin-confirm.js` | подтверждения опасных форм | внешний JS, совместимый с CSP |
 | `public_html/js/offline.js` | офлайн-интерфейс | удалить статусы автоматов |
 | `public_html/offline.html` | офлайн-страница | версии ресурсов равны `sw.js` |
 | `public_html/sw.js` | Service Worker | не кешировать `/admin` и секретные ответы |
@@ -29,7 +32,8 @@
 | `private/migrate_v15_to_v16.sql` | обновление старой БД | не запускать на чистой схеме |
 | `release/` | готовые ZIP | не редактировать вручную |
 | `PROJECT_MAP.md` | прежняя карта проекта | объединить с этим документом |
-| `AGENTS.md` | правила для ChatGPT и Codex | обновлять вместе с `CLAUDE.md` |
-| `QA_RESULTS_2026-08-26_GITHUB.md` | локальный исторический отчёт первой публикации | в рабочем GitHub не опубликован |
+| `AGENTS.md` | правила ChatGPT и Codex | обновлять вместе с `CLAUDE.md` |
+| `QA_RESULTS_2026-08-26_GITHUB.md` | проверка первой публикации | сохранять как исторический отчёт |
+| `QA_RESULTS_2026-08-31_SECURITY.md` | проверка исправлений безопасности | дополнить результатом GitHub Actions и smoke-теста |
 
 После сверки добавить точные точки входа, имена общих PHP-файлов, таблиц, build-скрипта и runtime-каталогов.

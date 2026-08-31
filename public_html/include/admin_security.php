@@ -7,6 +7,7 @@ const APP_LOGIN_WINDOW_SECONDS = 900;
 const APP_LOGIN_USER_LIMIT = 8;
 const APP_LOGIN_IP_LIMIT = 25;
 const APP_SECURITY_LOG_MAX_BYTES = 2097152;
+const APP_SECURITY_ALERT_INTERVAL = 900;
 
 function app_client_address(): string
 {
@@ -58,8 +59,50 @@ function app_security_identity(string $value): string
 function app_admin_alert(string $event, string $details = ''): void
 {
     // Уведомление не содержит пароль или открытый IP и не блокирует основную операцию при ошибке mail().
-    $config=app_config();$mail=$config['mail']??[];$recipient=filter_var((string)($mail['security_recipient']??$mail['recipient']??''),FILTER_VALIDATE_EMAIL);$sender=filter_var((string)($mail['from']??''),FILTER_VALIDATE_EMAIL);if(!$recipient||!$sender)return;
-    $subject='=?UTF-8?B?'.base64_encode('Киосквода: событие безопасности').'?=';$message="Событие: {$event}\nДетали: {$details}\nДата: ".date(DATE_ATOM)."\n";@mail((string)$recipient,$subject,$message,"Content-Type: text/plain; charset=UTF-8\r\nFrom: Kioskvoda <{$sender}>");
+    $config = app_config();
+    $mail = $config['mail'] ?? [];
+    $recipient = filter_var((string) ($mail['security_recipient'] ?? $mail['recipient'] ?? ''), FILTER_VALIDATE_EMAIL);
+    $sender = filter_var((string) ($mail['from'] ?? ''), FILTER_VALIDATE_EMAIL);
+    if (!$recipient || !$sender || !app_security_alert_allowed($event)) return;
+
+    $subject = '=?UTF-8?B?' . base64_encode('Киосквода: событие безопасности') . '?=';
+    $message = "Событие: {$event}\nДетали: {$details}\nДата: " . date(DATE_ATOM) . "\n";
+    @mail((string) $recipient, $subject, $message, "Content-Type: text/plain; charset=UTF-8\r\nFrom: Kioskvoda <{$sender}>");
+}
+
+function app_security_alert_allowed(string $event): bool
+{
+    try {
+        $path = app_security_directory() . DIRECTORY_SEPARATOR . 'security-alerts.json';
+        $handle = fopen($path, 'c+');
+        if ($handle === false || !flock($handle, LOCK_EX)) {
+            if (is_resource($handle)) fclose($handle);
+            return false;
+        }
+        try {
+            rewind($handle);
+            $raw = stream_get_contents($handle);
+            $state = is_string($raw) && $raw !== '' ? json_decode($raw, true) : [];
+            if (!is_array($state)) $state = [];
+            $now = time();
+            $state = array_filter($state, static fn ($timestamp): bool => is_int($timestamp) && $timestamp > $now - 86400);
+            $key = hash('sha256', $event);
+            $allowed = !isset($state[$key]) || (int) $state[$key] <= $now - APP_SECURITY_ALERT_INTERVAL;
+            if ($allowed) $state[$key] = $now;
+            rewind($handle);
+            ftruncate($handle, 0);
+            fwrite($handle, json_encode($state, JSON_UNESCAPED_SLASHES) ?: '{}');
+            fflush($handle);
+            @chmod($path, 0600);
+            return $allowed;
+        } finally {
+            flock($handle, LOCK_UN);
+            fclose($handle);
+        }
+    } catch (Throwable $error) {
+        error_log('kioskvoda_security alert_throttle_unavailable');
+        return false;
+    }
 }
 
 function app_admin_identity_is_new(string $address): bool
