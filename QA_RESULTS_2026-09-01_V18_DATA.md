@@ -24,9 +24,16 @@
 - JSON `public_html/data/kiosks.json` и `manifest.webmanifest`: разобран без ошибок;
 - статический поиск подтвердил отсутствие старых версий offline CSS/JS и вручную заданного `136`.
 
+## Проверено GitHub Actions
+
+- PHP lint всех PHP-файлов: пройден;
+- проектные регрессионные проверки: пройдены;
+- чистая MySQL 8.4, импорт `schema.sql`, транзакционная запись версии и аудита: пройдены;
+- Gitleaks: секреты не обнаружены;
+- CodeQL JavaScript: пройден.
+
 ## Не проверено
 
-- PHP lint и `tests/project_checks.php`: PHP CLI в текущей среде отсутствует;
 - миграция `private/migrate_v18_audit.sql` на MySQL;
 - запись атомарного JSON веб-пользователем;
 - создание ZIP через `ZipArchive`;

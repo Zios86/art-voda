@@ -65,6 +65,7 @@
 - пакетная операция показывает перечень реально изменённых точек;
 - добавлен `tests/project_checks.php` и его запуск в GitHub Actions;
 - для общего аудита добавлена миграция `private/migrate_v18_audit.sql`.
+- GitHub Actions подтвердил PHP/JS/JSON, проектные проверки, Gitleaks, CodeQL и чистую MySQL 8.4.
 
 ## Оставшиеся блокеры перед публикацией
 
