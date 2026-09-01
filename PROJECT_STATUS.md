@@ -66,6 +66,8 @@
 - добавлен `tests/project_checks.php` и его запуск в GitHub Actions;
 - для общего аудита добавлена миграция `private/migrate_v18_audit.sql`.
 - GitHub Actions подтвердил PHP/JS/JSON, проектные проверки, Gitleaks, CodeQL и чистую MySQL 8.4.
+- подготовлен воспроизводимый кандидат `v18-rc1` для Open Server и тестового Timeweb; production-статус не присвоен.
+- ZIP v18-rc1 успешно распакован и проверен по внешней и 98 внутренним SHA-256; результат записан в `QA_RESULTS_2026-09-01_V18_RELEASE.md`.
 
 ## Оставшиеся блокеры перед публикацией
 

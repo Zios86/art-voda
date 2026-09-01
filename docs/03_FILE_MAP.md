@@ -41,6 +41,8 @@
 | `private/migrate_v15_to_v16.sql` | обновление старой БД | не запускать на чистой схеме |
 | `private/migrate_v18_audit.sql` | расширение аудита v18 | выполнить один раз на существующей базе |
 | `tests/project_checks.php` | регрессионные проверки без MySQL | запускается локально и в GitHub Actions |
+| `release/RELEASE_MANIFEST.txt` | белый список ZIP | каждый публикуемый файл указан явно |
+| `release/build_release.sh` | воспроизводимая сборка | создаёт ZIP, SHA-256 и проверяет распаковку |
 | `release/` | готовые ZIP | не редактировать вручную |
 | `PROJECT_MAP.md` | прежняя карта проекта | объединить с этим документом |
 | `AGENTS.md` | правила ChatGPT и Codex | обновлять вместе с `CLAUDE.md` |
