@@ -128,6 +128,9 @@ function app_require_admin_password(): void
             return count($state[$identity]);
         });
         error_log('kioskvoda_security admin_reauth_failed');
+        if (function_exists('app_security_log') && function_exists('app_client_address')) {
+            app_security_log('admin_reauth_failed', (string) (app_config()['admin']['username'] ?? 'admin'), app_client_address(), ['attempts' => $attempts]);
+        }
         usleep((int) min(2000000, 400000 * (2 ** min(2, max(0, $attempts - 1)))));
         http_response_code(403);
         exit('Для этой операции необходимо повторно ввести пароль администратора.');

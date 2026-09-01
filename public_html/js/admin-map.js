@@ -61,6 +61,9 @@
     frame.addEventListener('load', function () {
         send('kioskvoda-map-init', {coordinates: currentCoordinates()});
     });
+    window.addEventListener('kioskvoda:draft-restored', function () {
+        send('kioskvoda-map-init', {coordinates: currentCoordinates()});
+    });
 
     findAddress.addEventListener('click', function () {
         var value = address.value.trim();
