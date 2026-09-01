@@ -99,4 +99,5 @@
 - `private/config.php.example` — безопасный шаблон конфигурации;
 - `private/config.php` — секреты, отсутствует в Git;
 - `.github/` — автоматические проверки GitHub;
+- `SECURITY.md` и `CONTRIBUTING.md` — безопасное сообщение об ошибках и правила pull request;
 - `docs/` — проектная документация.

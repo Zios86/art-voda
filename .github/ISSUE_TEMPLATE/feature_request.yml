@@ -1,0 +1,27 @@
+name: Предложение
+description: Предложить улучшение без изменения утверждённых ограничений
+title: "idea: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Какая задача решается
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Предлагаемое решение
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Ограничения проекта
+      options:
+        - label: Не добавляются статусы автоматов, даты обслуживания и способы оплаты
+          required: true
+        - label: Не придумываются номера, адреса, координаты, цены и фотографии
+          required: true
+

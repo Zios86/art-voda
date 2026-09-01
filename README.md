@@ -1,5 +1,7 @@
 # «Киосквода»
 
+[![Security checks](https://github.com/Zios86/art-voda/actions/workflows/security.yml/badge.svg)](https://github.com/Zios86/art-voda/actions/workflows/security.yml)
+
 Сайт сети автоматов артезианской воды: публичные страницы и карта точек, PHP API, административная панель, импорт CSV, история изменений, фотографии и резервные копии.
 
 ## Текущее состояние
@@ -19,6 +21,18 @@
 5. Следуйте инструкции [для Windows и Open Server](docs/08_LOCAL_WINDOWS.md).
 
 Подробная установка на Timeweb описана в [TIMEWEB_INSTALL.md](TIMEWEB_INSTALL.md).
+
+## Навигация по проекту
+
+| Раздел | Документ |
+|---|---|
+| Текущее состояние и блокеры | [PROJECT_STATUS.md](PROJECT_STATUS.md) |
+| Правила для AI-агентов | [AGENTS.md](AGENTS.md) и [CLAUDE.md](CLAUDE.md) |
+| Архитектура | [docs/02_ARCHITECTURE.md](docs/02_ARCHITECTURE.md) |
+| Локальный запуск Windows | [docs/08_LOCAL_WINDOWS.md](docs/08_LOCAL_WINDOWS.md) |
+| Тестирование | [docs/07_TESTING_AND_QA.md](docs/07_TESTING_AND_QA.md) |
+| Безопасность | [SECURITY.md](SECURITY.md) и [docs/06_SECURITY.md](docs/06_SECURITY.md) |
+| Как внести изменение | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## Важно о GitHub Pages
 

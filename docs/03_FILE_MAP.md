@@ -9,6 +9,11 @@
 | `.gitattributes` | единые окончания строк и бинарные типы | учитывать Windows/Open Server |
 | `.github/workflows/security.yml` | CI безопасности | PHP/JS/JSON, Gitleaks и CodeQL |
 | `.github/dependabot.yml` | обновление GitHub Actions | еженедельные pull request |
+| `.github/CODEOWNERS` | владелец изменений | автоматически запрашивать владельца при включённой защите ветки |
+| `.github/ISSUE_TEMPLATE/` | структурированные задачи | ошибки отдельно от предложений и уязвимостей |
+| `.github/PULL_REQUEST_TEMPLATE.md` | единая проверка PR | фиксировать тесты и непроверенные сценарии |
+| `SECURITY.md` | приватное сообщение об уязвимости | не публиковать детали атак в Issues |
+| `CONTRIBUTING.md` | правила участия | ветка, PR, тесты и документация |
 | `public_html/` | корень сайта | единственный web root |
 | `public_html/index.php` | главная страница | число точек не хранить вручную |
 | `public_html/api/` | публичный API | экранирование, корректный JSON, кеш |

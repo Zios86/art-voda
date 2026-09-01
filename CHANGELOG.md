@@ -42,3 +42,12 @@
 - коммит исправлений: `daf27b220f0cf1db3c2625404be666f85b77a912`;
 - GitHub Actions подтвердил PHP lint, JavaScript, JSON, Gitleaks и CodeQL;
 - MySQL/Apache и браузерные сценарии ещё требуют проверки на Open Server.
+
+## 2026-09-01 — порядок в GitHub
+
+- объединены зелёные Dependabot PR для Gitleaks v3 и CodeQL Action v4;
+- checkout Action обновлён до v7 вручную из конфликтующего PR;
+- добавлены CODEOWNERS, шаблоны Issue и pull request;
+- добавлены `SECURITY.md` и `CONTRIBUTING.md`;
+- README получил статус workflow и навигацию по документации;
+- релиз и тег намеренно не создавались до smoke-теста Open Server и Timeweb.

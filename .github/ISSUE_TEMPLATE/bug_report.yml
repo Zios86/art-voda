@@ -1,0 +1,45 @@
+name: Ошибка
+description: Сообщить о воспроизводимой ошибке проекта
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Не публикуйте пароли, конфигурацию, логи с персональными данными и детали уязвимостей.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Что произошло
+      description: Опишите фактическое поведение.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как повторить
+      description: Перечислите действия по шагам.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемый результат
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Среда
+      options:
+        - Windows и Open Server
+        - Тестовый Timeweb
+        - Рабочий Timeweb
+        - Другая
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Дополнительная информация
+      description: Версия браузера, PHP и обезличенный текст ошибки.
+
