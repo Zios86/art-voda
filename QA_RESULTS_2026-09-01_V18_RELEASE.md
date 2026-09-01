@@ -18,6 +18,7 @@
 - в ZIP отсутствуют `private/config.php`, `.git`, runtime, логи, backup и `public_html/img/index.php`;
 - пользовательские фотографии не включены, сохранён только защитный `.htaccess` каталога загрузок;
 - включены `schema.sql`, миграции, безопасный config example и инструкции.
+- сборщик добавлен в обязательный GitHub Actions workflow для следующих изменений.
 
 ## Не проверено
 

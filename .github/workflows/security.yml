@@ -23,6 +23,8 @@ jobs:
         run: node -e "for (const f of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(f, 'utf8'))" public_html/data/kiosks.json public_html/manifest.webmanifest
       - name: Run project regression checks
         run: php tests/project_checks.php
+      - name: Build and verify deployment archive
+        run: bash release/build_release.sh ci "$(date -u +%F)"
 
   secret-scan:
     name: Secret scan

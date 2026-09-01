@@ -47,7 +47,7 @@
 
 ## Автоматические проверки GitHub
 
-Workflow `.github/workflows/security.yml` проверяет PHP, JavaScript, JSON, проектные регрессии, чистую схему и транзакции на MySQL 8.4, историю на секреты через Gitleaks и JavaScript через CodeQL. Зелёный workflow не заменяет браузерный smoke-тест PHP/MySQL/Apache.
+Workflow `.github/workflows/security.yml` проверяет PHP, JavaScript, JSON, проектные регрессии, сборку и распаковку релизного ZIP, чистую схему и транзакции на MySQL 8.4, историю на секреты через Gitleaks и JavaScript через CodeQL. Зелёный workflow не заменяет браузерный smoke-тест PHP/MySQL/Apache.
 
 ## Браузеры и размеры
 
