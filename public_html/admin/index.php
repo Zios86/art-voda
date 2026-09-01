@@ -38,7 +38,7 @@ foreach ($rows as $row) if ((int) $row['id'] === $duplicateId) { $current=$row; 
 <body>
 <header class="admin-header">
     <div><strong>Киосквода</strong><span>Панель владельца</span></div>
-    <nav><a href="/" target="_blank" rel="noopener noreferrer">Открыть сайт</a><a href="/admin/map.php">Общая карта</a><a href="/admin/photos.php">Фотографии</a><a href="/admin/backups.php">Копии</a><a href="/admin/sessions.php">Входы</a><a href="/admin/diagnostics.php">Диагностика</a><a href="/admin/export.php">Скачать CSV</a><form action="/admin/logout.php" method="post"><input type="hidden" name="csrf" value="<?=app_h(app_csrf())?>"><button>Выйти</button></form></nav>
+    <nav><a href="/" target="_blank" rel="noopener noreferrer">Открыть сайт</a><a href="/admin/map.php">Общая карта</a><a href="/admin/photos.php">Фотографии</a><a href="/admin/backups.php">Копии</a><a href="/admin/sessions.php">Входы</a><a href="/admin/security-log.php">Безопасность</a><a href="/admin/diagnostics.php">Диагностика</a><a href="/admin/export.php">Скачать CSV</a><form action="/admin/logout.php" method="post"><input type="hidden" name="csrf" value="<?=app_h(app_csrf())?>"><button>Выйти</button></form></nav>
 </header>
 <main>
 <section class="admin-dashboard">

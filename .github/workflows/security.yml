@@ -16,11 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Check PHP syntax
-        run: find public_html -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+        run: find public_html tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Check JavaScript syntax
         run: find public_html -type f -name '*.js' -print0 | xargs -0 -n1 node --check
       - name: Check JSON files
         run: node -e "for (const f of process.argv.slice(1)) JSON.parse(require('fs').readFileSync(f, 'utf8'))" public_html/data/kiosks.json public_html/manifest.webmanifest
+      - name: Run project regression checks
+        run: php tests/project_checks.php
+      - name: Build and verify deployment archive
+        run: bash release/build_release.sh ci "$(date -u +%F)"
 
   secret-scan:
     name: Secret scan
@@ -32,6 +36,34 @@ jobs:
       - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  database:
+    name: MySQL schema and transaction smoke test
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: kioskvody
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v7
+      - name: Load clean schema
+        run: mysql -h 127.0.0.1 -uroot -proot kioskvody < private/schema.sql
+      - name: Run database checks
+        env:
+          TEST_DB_HOST: 127.0.0.1
+          TEST_DB_NAME: kioskvody
+          TEST_DB_USER: root
+          TEST_DB_PASSWORD: root
+        run: php tests/database_checks.php
 
   codeql:
     name: CodeQL JavaScript

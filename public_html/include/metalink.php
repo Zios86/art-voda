@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <?php
-$assetVersion = '20260816-2';
+$assetVersion = '20260901-1';
 $requestPath = parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?: '/';
 $canonicalPaths = [
     '/index.php' => '/',

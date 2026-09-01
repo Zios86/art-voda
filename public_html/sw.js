@@ -1,12 +1,12 @@
-// Service Worker v14: кеширует публичные ресурсы, но никогда не перехватывает админку и форму.
-const CACHE = 'kioskvoda-v14';
+// Service Worker v18: кеширует публичные ресурсы, но никогда не перехватывает админку и форму.
+const CACHE = 'kioskvoda-v18-20260901-1';
 const STATIC = [
   '/', '/offline.html',
-  '/css/offline.css?v=20260816-2', '/js/offline.js?v=20260816-2',
-  '/css/grid.css?v=20260816-2', '/css/style.css?v=20260816-2',
-  '/css/media.css?v=20260816-2', '/css/compliance.css?v=20260816-2',
-  '/css/showcase.css?v=20260816-2', '/css/design-v14.css?v=20260816-2', '/js/function.js?v=20260816-2',
-  '/js/external-content.js?v=20260816-2', '/list_box_layout.js?v=20260816-2',
+  '/css/offline.css?v=20260901-1', '/js/offline.js?v=20260901-1',
+  '/css/grid.css?v=20260901-1', '/css/style.css?v=20260901-1',
+  '/css/media.css?v=20260901-1', '/css/compliance.css?v=20260901-1',
+  '/css/showcase.css?v=20260901-1', '/css/design-v14.css?v=20260901-1', '/js/function.js?v=20260901-1',
+  '/js/external-content.js?v=20260901-1', '/list_box_layout.js?v=20260901-1',
   '/fonts/geist-cyrillic.woff2', '/fonts/geist-latin.woff2',
   '/img/brand-logo-artesian.png?v=20260815-1', '/img/hero-water-v3.webp',
   '/img/kiosk-cutout-v3.webp', '/data/kiosks.json',

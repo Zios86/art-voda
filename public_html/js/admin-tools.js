@@ -56,11 +56,25 @@
         var note = document.getElementById('autosave-note');
         var fields = Array.from(form.querySelectorAll('input:not([type=file]):not([type=hidden]),select,textarea'));
         try {
+            if (new URLSearchParams(window.location.search).has('saved')) {
+                var completedKey = sessionStorage.getItem('kioskvoda-pending-draft');
+                if (completedKey) localStorage.removeItem(completedKey);
+                sessionStorage.removeItem('kioskvoda-pending-draft');
+            }
+        } catch (error) {}
+        try {
             var saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-            if (saved && saved.values && confirm('Найден несохранённый черновик формы. Восстановить его?')) fields.forEach(function(field){if(Object.prototype.hasOwnProperty.call(saved.values,field.name))field.value=saved.values[field.name];});
+            if (saved && saved.values && confirm('Найден несохранённый черновик формы. Восстановить его?')) {
+                fields.forEach(function(field){if(Object.prototype.hasOwnProperty.call(saved.values,field.name))field.value=saved.values[field.name];});
+                form.dispatchEvent(new Event('input',{bubbles:true}));
+                form.dispatchEvent(new Event('change',{bubbles:true}));
+                window.dispatchEvent(new CustomEvent('kioskvoda:draft-restored'));
+                if(note)note.textContent='Черновик восстановлен. Карта и предпросмотр обновлены';
+            }
         } catch (error) {}
         function saveDraft(){var values={};fields.forEach(function(field){if(field.name)values[field.name]=field.value;});try{localStorage.setItem(storageKey,JSON.stringify({savedAt:Date.now(),values:values}));if(note)note.textContent='Черновик сохранён в этом браузере';}catch(error){}}
-        form.addEventListener('input',saveDraft);form.addEventListener('submit',function(){try{localStorage.removeItem(storageKey);}catch(error){}});
+        form.addEventListener('input',saveDraft);
+        form.addEventListener('submit',function(){try{sessionStorage.setItem('kioskvoda-pending-draft',storageKey);}catch(error){}});
         document.querySelectorAll('[data-preview-mode]').forEach(function(button){button.addEventListener('click',function(){var card=document.querySelector('[data-preview-card]');document.querySelectorAll('[data-preview-mode]').forEach(function(item){item.classList.toggle('is-active',item===button);});card.classList.remove('preview--mobile','preview--balloon');if(button.dataset.previewMode!=='desktop')card.classList.add('preview--'+button.dataset.previewMode);});});
         document.addEventListener('keydown',function(event){if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='s'){event.preventDefault();form.requestSubmit();}else if(event.key==='/'&&!event.ctrlKey&&!event.metaKey&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){event.preventDefault();search.focus();}else if(event.key==='Escape'){window.location.href='/admin/';}});
     }

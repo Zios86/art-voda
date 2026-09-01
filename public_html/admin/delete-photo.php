@@ -4,6 +4,7 @@ declare(strict_types=1);
 /** Перемещает свободную фотографию в закрытую корзину на 30 дней. */
 require_once dirname(__DIR__) . '/include/app.php';
 require_once dirname(__DIR__) . '/include/kiosk_admin.php';
+require_once dirname(__DIR__) . '/include/admin_security.php';
 app_require_admin();
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -34,6 +35,7 @@ if (!$directory || !$path || dirname($path) !== $directory || !is_file($path)) {
 
 try {
     app_kiosk_trash_photo($path, $name);
+    app_security_log('photo_trashed', (string) (app_config()['admin']['username'] ?? 'admin'), app_client_address(), ['photo' => hash('sha256', $name)]);
 } catch (Throwable $error) {
     error_log('kioskvoda_admin photo_trash_failed');
     http_response_code(500);

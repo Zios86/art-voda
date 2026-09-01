@@ -25,13 +25,70 @@ function app_kiosk_backup(PDO $pdo, string $reason = 'change'): string
     if ($reason === 'before-restore' && function_exists('app_admin_alert')) app_admin_alert('Запущено восстановление резервной копии', 'Создана страховочная копия перед операцией');
 
     $files = glob($directory . '/kiosks-before-*.json') ?: [];
-    rsort($files);
+    usort($files, static function (string $first, string $second): int {
+        return ((int) filemtime($second)) <=> ((int) filemtime($first));
+    });
     foreach (array_slice($files, 30) as $oldFile) {
         if (!unlink($oldFile)) {
             error_log('kioskvoda_admin old_backup_cleanup_failed');
         }
     }
     return $path;
+}
+
+/** Возвращает только публичные поля, одинаковые для API и аварийного JSON. */
+function app_kiosk_public_rows(PDO $pdo): array
+{
+    return $pdo->query(
+        "SELECT id,machine_number,address,area,latitude,longitude,schedule,metro,landmark,photo_url,updated_at "
+        . "FROM kiosks WHERE status <> 'hidden' ORDER BY machine_number IS NULL,machine_number,address"
+    )->fetchAll();
+}
+
+/** Атомарно обновляет аварийный список после успешного изменения базы. */
+function app_kiosk_sync_public_json(PDO $pdo): void
+{
+    $path = dirname(__DIR__) . '/data/kiosks.json';
+    $body = json_encode([
+        'version' => 2,
+        'generated_at' => date(DATE_ATOM),
+        'source' => 'database',
+        'kiosks' => app_kiosk_public_rows($pdo),
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
+    $temporary = $path . '.' . bin2hex(random_bytes(6)) . '.tmp';
+    if (file_put_contents($temporary, $body . PHP_EOL, LOCK_EX) === false) {
+        throw new RuntimeException('Public kiosk data cannot be written');
+    }
+    @chmod($temporary, 0644);
+    if (!rename($temporary, $path)) {
+        @unlink($temporary);
+        throw new RuntimeException('Public kiosk data cannot be replaced');
+    }
+    app_kiosk_clear_api_cache();
+}
+
+/** Унифицированная запись событий изменения данных. */
+function app_kiosk_audit(PDO $pdo, ?int $kioskId, string $action): void
+{
+    $config = app_config();
+    $auditKey = (string) ($config['admin']['audit_key'] ?? $config['admin']['password_hash'] ?? 'audit');
+    $statement = $pdo->prepare('INSERT INTO kiosk_audit (kiosk_id,action,admin_name,ip_hash) VALUES (?,?,?,?)');
+    $statement->execute([
+        $kioskId,
+        substr($action, 0, 40),
+        (string) ($config['admin']['username'] ?? 'admin'),
+        hash_hmac('sha256', (string) ($_SERVER['REMOTE_ADDR'] ?? ''), $auditKey),
+    ]);
+}
+
+function app_kiosk_changed_fields(array $before, array $after): array
+{
+    $fields = ['machine_number','address','area','latitude','longitude','schedule','metro','landmark','photo_url'];
+    $changed = [];
+    foreach ($fields as $field) {
+        if ((string) ($before[$field] ?? '') !== (string) ($after[$field] ?? '')) $changed[] = $field;
+    }
+    return $changed;
 }
 
 function app_kiosk_clear_api_cache(): void

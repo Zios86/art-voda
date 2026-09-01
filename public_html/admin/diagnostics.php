@@ -4,13 +4,15 @@ declare(strict_types=1);
 /** Read-only самопроверка окружения Timeweb без вывода секретных значений. */
 require_once dirname(__DIR__) . '/include/app.php';app_require_admin();
 $checks=[];function add_check(array &$checks,string $name,bool $ok,string $message):void{$checks[]=['name'=>$name,'ok'=>$ok,'message'=>$message];}
-try{$pdo=app_pdo();$pdo->query('SELECT 1');add_check($checks,'База данных',true,'Соединение работает');try{$pdo->query('SELECT 1 FROM kiosk_versions LIMIT 1');add_check($checks,'История версий',true,'Таблица kiosk_versions доступна');}catch(Throwable $e){add_check($checks,'История версий',false,'Выполните migrate_v15_to_v16.sql');}}catch(Throwable $e){add_check($checks,'База данных',false,'Нет соединения');}
+try{$pdo=app_pdo();$pdo->query('SELECT 1');add_check($checks,'База данных',true,'Соединение работает');try{$pdo->query('SELECT 1 FROM kiosk_versions LIMIT 1');add_check($checks,'История версий',true,'Таблица kiosk_versions доступна');}catch(Throwable $e){add_check($checks,'История версий',false,'Выполните migrate_v15_to_v16.sql');}try{$column=$pdo->query("SELECT IS_NULLABLE,CHARACTER_MAXIMUM_LENGTH FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='kiosk_audit' AND COLUMN_NAME='kiosk_id'")->fetch();add_check($checks,'Аудит v18',is_array($column)&&($column['IS_NULLABLE']??'')==='YES','Для существующей базы выполните migrate_v18_audit.sql');}catch(Throwable $e){add_check($checks,'Аудит v18',false,'Не удалось проверить схему аудита');}}catch(Throwable $e){add_check($checks,'База данных',false,'Нет соединения');}
 $runtime=dirname(__DIR__,2).'/private/runtime';$uploads=dirname(__DIR__).'/uploads/kiosks';
 add_check($checks,'PHP',version_compare(PHP_VERSION,'8.4.0','>='),'Версия '.PHP_VERSION);
 add_check($checks,'GD',extension_loaded('gd'),'Без GD фотографии нельзя безопасно пересохранять');
 add_check($checks,'Fileinfo',extension_loaded('fileinfo'),'Проверка настоящего MIME-типа файлов');
+add_check($checks,'ZipArchive',class_exists(ZipArchive::class),'Нужен для полной копии базы и фотографий');
 add_check($checks,'Runtime',is_dir($runtime)&&is_writable($runtime),'Закрытое хранилище сессий, кеша и backup');
 add_check($checks,'Фотографии',is_dir($uploads)&&is_writable($uploads),'Папка uploads/kiosks доступна для записи');
+add_check($checks,'Аварийный JSON',is_writable(dirname(__DIR__).'/data'),'Каталог data доступен для атомарного обновления kiosks.json');
 add_check($checks,'HTTPS',(!empty($_SERVER['HTTPS'])&&$_SERVER['HTTPS']!=='off'),'Админка должна работать только по HTTPS');
 $mail=app_config()['mail']??[];add_check($checks,'Почта',filter_var((string)($mail['recipient']??''),FILTER_VALIDATE_EMAIL)!==false&&filter_var((string)($mail['from']??''),FILTER_VALIDATE_EMAIL)!==false,'Проверены адреса recipient и from');
 $apiCache=$runtime.'/kiosks-api.json';add_check($checks,'Кеш API',!is_file($apiCache)||is_readable($apiCache),is_file($apiCache)?'Кеш создан и читается':'Создастся после первого запроса');

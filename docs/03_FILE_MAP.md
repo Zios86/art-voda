@@ -19,6 +19,10 @@
 | `public_html/api/` | публичный API | экранирование, корректный JSON, кеш |
 | `public_html/admin/` | административные страницы | вход + CSRF для изменений |
 | `public_html/admin/batch.php` | пакетные изменения | менять только фактически изменённые ID |
+| `public_html/admin/backup.php` | полная ручная ZIP-копия | база, используемые фото и SHA-256 |
+| `public_html/admin/restore-photo.php` | восстановление фото из корзины | только безопасные имена и закрытый путь |
+| `public_html/admin/security-log.php` | журнал безопасности | показывает только обезличенные идентификаторы |
+| `public_html/include/kiosk_admin.php` | общие операции с данными | backup, JSON, аудит, фото и сравнение |
 | `public_html/css/` | стили | избегать новых дублей |
 | `public_html/js/` | клиентская логика | без inline JS при строгой CSP |
 | `public_html/js/admin-confirm.js` | подтверждения опасных форм | внешний JS, совместимый с CSP |
@@ -35,6 +39,10 @@
 | `private/config.php.example` | шаблон конфигурации | только безопасные примеры |
 | `private/schema.sql` | чистая схема БД | источник для новой установки |
 | `private/migrate_v15_to_v16.sql` | обновление старой БД | не запускать на чистой схеме |
+| `private/migrate_v18_audit.sql` | расширение аудита v18 | выполнить один раз на существующей базе |
+| `tests/project_checks.php` | регрессионные проверки без MySQL | запускается локально и в GitHub Actions |
+| `release/RELEASE_MANIFEST.txt` | белый список ZIP | каждый публикуемый файл указан явно |
+| `release/build_release.sh` | воспроизводимая сборка | создаёт ZIP, SHA-256 и проверяет распаковку |
 | `release/` | готовые ZIP | не редактировать вручную |
 | `PROJECT_MAP.md` | прежняя карта проекта | объединить с этим документом |
 | `AGENTS.md` | правила ChatGPT и Codex | обновлять вместе с `CLAUDE.md` |

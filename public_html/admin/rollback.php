@@ -32,13 +32,10 @@ try {
     app_kiosk_backup($pdo, 'rollback');
     $update = $pdo->prepare('UPDATE kiosks SET machine_number=?,address=?,area=?,latitude=?,longitude=?,schedule=?,metro=?,landmark=?,photo_url=?,updated_at=CURRENT_TIMESTAMP WHERE id=?');
     $update->execute([$data['number'],$data['address'],$data['area'],$data['latitude'],$data['longitude'],$data['schedule'],$data['metro'],$data['landmark'],(string)($snapshot['photo_url'] ?? ''),$kioskId]);
-    $config = app_config();
-    $auditKey = (string) ($config['admin']['audit_key'] ?? $config['admin']['password_hash'] ?? '');
-    $audit = $pdo->prepare('INSERT INTO kiosk_audit (kiosk_id,action,admin_name,ip_hash) VALUES (?,?,?,?)');
-    $audit->execute([$kioskId,'rollback',(string)($config['admin']['username'] ?? 'admin'),hash_hmac('sha256',(string)($_SERVER['REMOTE_ADDR'] ?? ''),$auditKey)]);
+    app_kiosk_audit($pdo, $kioskId, 'rollback');
     app_kiosk_store_version($pdo, $kioskId, 'rollback');
     $pdo->commit();
-    app_kiosk_clear_api_cache();
+    app_kiosk_sync_public_json($pdo);
     header('Location: /admin/history.php?id='.$kioskId.'&restored=1');
 } catch (InvalidArgumentException $error) {
     if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) $pdo->rollBack();

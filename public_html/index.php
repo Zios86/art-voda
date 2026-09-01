@@ -1,3 +1,14 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/include/app.php';
+try {
+    $publicKioskCount = (int) app_pdo()->query("SELECT COUNT(*) FROM kiosks WHERE status <> 'hidden'")->fetchColumn();
+} catch (Throwable $error) {
+    $publicKioskCount = 0;
+    $fallback = json_decode((string) @file_get_contents(__DIR__ . '/data/kiosks.json'), true);
+    if (is_array($fallback['kiosks'] ?? null)) $publicKioskCount = count($fallback['kiosks']);
+}
+?>
 <!DOCTYPE html>
 <!-- Главная страница: содержательные секции, публичная карта и быстрые действия PWA. -->
 <html lang="ru">
@@ -69,7 +80,7 @@
             </article>
             <article class="bento-card bento-card--price" data-reveal data-reveal-delay="1"><p class="bento-card__label">Цена</p><strong>10 ₽</strong><span>за один литр</span></article>
             <article class="bento-card" data-reveal data-reveal-delay="2"><div class="feature-card__icon"><img src="/img/Life_Water_icon_3.svg" width="200" height="200" alt="" loading="lazy" decoding="async"></div><p class="bento-card__label">Открытость</p><h3>Документы доступны онлайн</h3><a href="/documents.php">Посмотреть материалы →</a></article>
-            <article class="bento-card bento-card--map" data-reveal><p class="bento-card__label">География</p><strong>136</strong><span>точек в исходном списке</span><a href="#marketplace">Открыть карту →</a></article>
+            <article class="bento-card bento-card--map" data-reveal><p class="bento-card__label">География</p><strong><?=number_format($publicKioskCount,0,',',' ')?></strong><span>точек на карте</span><a href="#marketplace">Открыть карту →</a></article>
             <article class="bento-card bento-card--fresh" data-reveal data-reveal-delay="1"><div class="feature-card__icon"><img src="/img/Life_Water_icon_2.svg" width="200" height="200" alt="" loading="lazy" decoding="async"></div><div><p class="bento-card__label">Свежесть</p><h3>Обновление воды каждые три дня</h3><p>Короткий цикл доставки от источника до точек продаж.</p></div></article>
         </div>
     </div>
