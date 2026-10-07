@@ -2,8 +2,8 @@
 set -euo pipefail
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-version="${1:-v18-rc1}"
-date_label="${2:-2026-09-01}"
+version="${1:-v18-rc2}"
+date_label="${2:-2026-10-08}"
 safe_version="${version//[^a-zA-Z0-9._-]/-}"
 output_dir="$project_root/dist"
 archive="$output_dir/kioskvody_timeweb_${date_label}_${safe_version}.zip"

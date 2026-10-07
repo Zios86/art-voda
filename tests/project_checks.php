@@ -27,6 +27,18 @@ $index = $read('public_html/index.php');
 $check(str_contains($index, 'SELECT COUNT(*) FROM kiosks'), 'Главная не получает количество точек из базы');
 $check(!preg_match('/<strong>136<\/strong>/', $index), 'На главной осталось вручную заданное число 136');
 
+$style = $read('public_html/css/style.css');
+$media = $read('public_html/css/media.css');
+$check(str_contains($style, 'grid-auto-flow:dense'), 'Публичная сетка карточек потеряла плотную masonry-раскладку');
+$check(str_contains($style, '.bento-card--source{grid-column:span 2;grid-row:span 12'), 'Первая акцентная карточка больше не занимает две колонки');
+$check(str_contains($style, '.bento-card--price{grid-row:span 5') && str_contains($style, '.bento-card--documents{grid-row:span 7'), 'Карточки снова имеют одинаковую высоту');
+$check(str_contains($media, 'grid-auto-flow:row;grid-auto-rows:auto'), 'Мобильная версия не сбрасывает masonry-сетку в один столбец');
+
+$meta = $read('public_html/include/metalink.php');
+preg_match('~\\$assetVersion = \'([0-9-]+)\'~', $meta, $assetVersion);
+$check(isset($assetVersion[1]) && str_contains($worker, "/css/style.css?v={$assetVersion[1]}"), 'Версия style.css расходится с Service Worker');
+$check(isset($assetVersion[1]) && str_contains($worker, "/css/media.css?v={$assetVersion[1]}"), 'Версия media.css расходится с Service Worker');
+
 $admin = $read('public_html/include/kiosk_admin.php');
 $check(str_contains($admin, 'app_kiosk_sync_public_json'), 'Нет генератора kiosks.json');
 $check(str_contains($admin, 'filemtime($second)'), 'Очистка backup не сортируется по времени файла');
