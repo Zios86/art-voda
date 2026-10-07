@@ -18,6 +18,7 @@
 - сброс masonry-параметров на телефоне;
 - совпадение версии основных CSS с Service Worker;
 - отсутствие ошибок форматирования Git diff.
+- GitHub Actions: PHP/JS/JSON, проектные регрессии, сборка, MySQL 8.4, Gitleaks и CodeQL.
 
 ## Требует ручной проверки
 
