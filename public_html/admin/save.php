@@ -48,21 +48,13 @@ try {
         $action = 'create';
     }
 
-    $config = app_config();
-    $auditKey = (string) ($config['admin']['audit_key'] ?? $config['admin']['password_hash'] ?? '');
-    $audit = $pdo->prepare('INSERT INTO kiosk_audit (kiosk_id,action,admin_name,ip_hash) VALUES (?,?,?,?)');
-    $audit->execute([
-        $id,
-        $action,
-        (string) ($config['admin']['username'] ?? 'admin'),
-        hash_hmac('sha256', (string) ($_SERVER['REMOTE_ADDR'] ?? ''), $auditKey),
-    ]);
+    app_kiosk_audit($pdo, $id, $action);
 
     // Снимок создаётся внутри той же транзакции: история не расходится с карточкой.
     app_kiosk_store_version($pdo, $id, $action);
 
     $pdo->commit();
-    app_kiosk_clear_api_cache();
+    app_kiosk_sync_public_json($pdo);
     header('Location: /admin/?saved=1&edit=' . $id);
     exit;
 } catch (InvalidArgumentException $error) {

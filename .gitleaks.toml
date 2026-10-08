@@ -1,0 +1,4 @@
+title = "Kioskvoda secret scanning"
+
+[extend]
+useDefault = true

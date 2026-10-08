@@ -34,7 +34,7 @@ body{background:#f5fbfd}
 .section-heading h2,.source-copy h2,.map-section__heading h2,.calculator-copy h2{font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-weight:750;letter-spacing:-.048em}
 .bento-grid{gap:22px}
 .bento-card{border-color:rgba(201,224,233,.82);border-radius:22px;box-shadow:0 14px 40px rgba(8,59,83,.07)}
-.bento-card--source{background:linear-gradient(145deg,#fff,#effaff)}
+.bento-card--source{border-color:rgba(94,214,241,.38);background:linear-gradient(145deg,#052f4b,#0879a6);box-shadow:0 24px 60px rgba(5,62,91,.25)}
 .bento-card--price{background:linear-gradient(145deg,#073452,#075e87)}
 .bento-card--map{background:linear-gradient(145deg,#eefaff,#dff5fb)}
 .map-shell{border-color:rgba(185,216,228,.8);box-shadow:0 28px 75px rgba(8,55,79,.14)}

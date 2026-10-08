@@ -8,8 +8,9 @@
         <nav id="desktop-menu" class="desktop-menu" aria-label="Главное меню">
             <a href="/">О воде</a>
             <a href="/#marketplace">Точки продаж</a>
-            <a href="/#cost">Стоимость</a>
+            <a href="/#how-it-works">Как набрать</a>
             <a href="/documents.php">Документы</a>
+            <a href="/#faq">Вопросы</a>
             <a href="/contact.php">Контакты</a>
         </nav>
         <a class="header-phone" href="tel:+78124099033"><span>Позвонить</span><strong>+7 (812) 409-90-33</strong></a>
@@ -20,8 +21,9 @@
     <nav id="mobile-menu" class="mobile-menu" aria-label="Мобильное меню" hidden>
         <a href="/">О воде</a>
         <a href="/#marketplace">Точки продаж</a>
-        <a href="/#cost">Стоимость</a>
+        <a href="/#how-it-works">Как набрать</a>
         <a href="/documents.php">Документы</a>
+        <a href="/#faq">Вопросы</a>
         <a href="/contact.php">Контакты</a>
         <a href="tel:+78124099033">Позвонить: +7 (812) 409-90-33</a>
     </nav>

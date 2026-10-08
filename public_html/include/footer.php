@@ -8,7 +8,7 @@
         </div>
         <div>
             <h2>Навигация</h2>
-            <ul class="footer-links"><li><a href="/#marketplace">Точки продаж</a></li><li><a href="/#cost">Стоимость</a></li><li><a href="/documents.php">Документы</a></li><li><a href="/contact.php">Обращение</a></li></ul>
+            <ul class="footer-links"><li><a href="/#marketplace">Точки продаж</a></li><li><a href="/#how-it-works">Как набрать воду</a></li><li><a href="/#faq">Частые вопросы</a></li><li><a href="/documents.php">Документы</a></li><li><a href="/contact.php">Обращение</a></li></ul>
         </div>
         <div>
             <h2>Контакты</h2>

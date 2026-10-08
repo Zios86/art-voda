@@ -14,13 +14,10 @@
                 var card = document.createElement('article');
                 var title = document.createElement('strong');
                 var address = document.createElement('span');
-                var status = document.createElement('span');
                 card.className = 'item';
                 title.textContent = item.machine_number ? 'Автомат №' + item.machine_number : 'Точка продажи';
                 address.textContent = item.address;
-                status.className = 'status';
-                status.textContent = item.status === 'maintenance' ? 'Временно не работает' : item.status === 'planned' ? 'Скоро открытие' : 'Работает';
-                card.append(title, address, status);
+                card.append(title, address);
                 list.append(card);
             });
             if (!found.length) list.innerHTML = '<p class="empty">Ничего не найдено</p>';
