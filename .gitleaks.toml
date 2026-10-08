@@ -1,0 +1,11 @@
+title = "Kioskvoda secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Public, domain-restricted Yandex Maps browser key; it is delivered to every map visitor and is not a server credential."
+regexTarget = "match"
+regexes = [
+  '''53339f0b-4eb7-462c-b883-141779b77ade''',
+]
