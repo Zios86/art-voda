@@ -2,7 +2,7 @@
 set -euo pipefail
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-version="${1:-v18-rc2}"
+version="${1:-v18-rc3}"
 date_label="${2:-2026-10-08}"
 safe_version="${version//[^a-zA-Z0-9._-]/-}"
 output_dir="$project_root/dist"

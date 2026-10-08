@@ -26,6 +26,18 @@ $check(!preg_match('/maintenance|planned|Временно не работает|
 $index = $read('public_html/index.php');
 $check(str_contains($index, 'SELECT COUNT(*) FROM kiosks'), 'Главная не получает количество точек из базы');
 $check(!preg_match('/<strong>136<\/strong>/', $index), 'На главной осталось вручную заданное число 136');
+$check(strpos($index, 'id="marketplace"') < strpos($index, 'id="facts"'), 'Карта снова расположена ниже блока преимуществ');
+$check(str_contains($index, 'data-hero-kiosk-search') && str_contains($read('public_html/js/function.js'), 'hero-kiosk-query'), 'Нет быстрого поиска точки на первом экране');
+$check(str_contains($index, 'id="faq"') && str_contains($index, "'@type' => 'FAQPage'"), 'FAQ или его структурированные данные отсутствуют');
+$check(str_contains($index, "'@type' => 'Organization'") && str_contains($index, "'@type' => 'LocalBusiness'"), 'Нет структурированных данных организации');
+$check(!str_contains($index, 'class="price-section"') && !str_contains($read('public_html/include/header.php'), '#cost'), 'На странице остался повторяющийся ценовой блок или старая ссылка');
+
+$offer = $read('public_html/offer.php');
+$paymentMethods = $index . "\n" . $offer;
+$check(!preg_match('/наличн|безналич|QR-код чека|сдач/u', $paymentMethods), 'На публичных страницах снова указаны способы оплаты или сдача');
+$mapScript = $read('public_html/list_box_layout.js');
+$check(!str_contains($mapScript, 'Данные актуальны') && str_contains($mapScript, 'Данные на '), 'Карта утверждает актуальность данных без даты');
+$check(str_contains($read('public_html/api/kiosks.php'), "'generated_at' => date(DATE_ATOM)"), 'API не сообщает дату формирования набора данных');
 
 $style = $read('public_html/css/style.css');
 $media = $read('public_html/css/media.css');
@@ -38,6 +50,7 @@ $meta = $read('public_html/include/metalink.php');
 preg_match('~\\$assetVersion = \'([0-9-]+)\'~', $meta, $assetVersion);
 $check(isset($assetVersion[1]) && str_contains($worker, "/css/style.css?v={$assetVersion[1]}"), 'Версия style.css расходится с Service Worker');
 $check(isset($assetVersion[1]) && str_contains($worker, "/css/media.css?v={$assetVersion[1]}"), 'Версия media.css расходится с Service Worker');
+$check(isset($assetVersion[1]) && str_contains($worker, "/js/function.js?v={$assetVersion[1]}"), 'Версия function.js расходится с Service Worker');
 
 $admin = $read('public_html/include/kiosk_admin.php');
 $check(str_contains($admin, 'app_kiosk_sync_public_json'), 'Нет генератора kiosks.json');

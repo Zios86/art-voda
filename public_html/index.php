@@ -8,6 +8,61 @@ try {
     $fallback = json_decode((string) @file_get_contents(__DIR__ . '/data/kiosks.json'), true);
     if (is_array($fallback['kiosks'] ?? null)) $publicKioskCount = count($fallback['kiosks']);
 }
+$structuredData = [
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'Organization',
+            '@id' => 'https://киоскводы.рф/#organization',
+            'name' => 'Киосквода',
+            'legalName' => 'ИП Иванов Дмитрий Валерьевич',
+            'url' => 'https://киоскводы.рф/',
+            'logo' => 'https://киоскводы.рф/img/brand-logo-artesian.png',
+            'telephone' => '+7-812-409-90-33',
+            'email' => 'info@lifewater24.ru',
+            'sameAs' => ['https://vk.com/kioskvoda'],
+        ],
+        [
+            '@type' => 'WebSite',
+            '@id' => 'https://киоскводы.рф/#website',
+            'url' => 'https://киоскводы.рф/',
+            'name' => 'Киосквода',
+            'inLanguage' => 'ru-RU',
+            'publisher' => ['@id' => 'https://киоскводы.рф/#organization'],
+        ],
+        [
+            '@type' => 'LocalBusiness',
+            '@id' => 'https://киоскводы.рф/#office',
+            'name' => 'Киосквода',
+            'parentOrganization' => ['@id' => 'https://киоскводы.рф/#organization'],
+            'telephone' => '+7-812-409-90-33',
+            'email' => 'info@lifewater24.ru',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'postalCode' => '193230',
+                'addressLocality' => 'Санкт-Петербург',
+                'streetAddress' => 'переулок Челиева, 13, офис 306',
+                'addressCountry' => 'RU',
+            ],
+            'openingHoursSpecification' => [[
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens' => '10:00',
+                'closes' => '19:00',
+            ]],
+        ],
+        [
+            '@type' => 'FAQPage',
+            '@id' => 'https://киоскводы.рф/#faq',
+            'mainEntity' => [
+                ['@type' => 'Question', 'name' => 'Как найти ближайший автомат?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Введите улицу или номер автомата в поиске на главной странице либо используйте кнопку поиска рядом на карте.']],
+                ['@type' => 'Question', 'name' => 'Можно ли использовать свою тару?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Да, для набора воды можно использовать собственную чистую тару.']],
+                ['@type' => 'Question', 'name' => 'Где посмотреть документы на воду?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Опубликованные страницы лабораторного протокола и декларация размещены в разделе «Документы».']],
+                ['@type' => 'Question', 'name' => 'Как сообщить о проблеме с автоматом?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Укажите номер или адрес автомата, дату, время и описание ситуации в форме обращения или позвоните по телефону, указанному на сайте.']],
+            ],
+        ],
+    ],
+];
 ?>
 <!DOCTYPE html>
 <!-- Главная страница: содержательные секции, публичная карта и быстрые действия PWA. -->
@@ -20,6 +75,7 @@ try {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://киоскводы.рф/" />
 <link rel="preload" href="/img/hero-water-v3.webp" as="image" type="image/webp" fetchpriority="high" />
+<script type="application/ld+json"><?=json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP)?></script>
 <?php require __DIR__ . '/include/metalink.php'; ?>
 </head>
 <body>
@@ -37,6 +93,11 @@ try {
                 <a class="button button--primary" href="#marketplace">Найти ближайший автомат</a>
                 <a class="button button--glass" href="/documents.php">Посмотреть документы</a>
             </div>
+            <form class="hero-search" data-hero-kiosk-search role="search">
+                <label for="hero-kiosk-query">Быстрый поиск точки</label>
+                <div><input id="hero-kiosk-query" type="search" placeholder="Улица, дом или номер автомата" autocomplete="street-address" required><button type="submit">Найти</button></div>
+                <p id="hero-search-note">Поиск откроет интерактивную Яндекс.Карту.</p>
+            </form>
             <ul class="hero__trust" aria-label="Преимущества">
                 <li><span aria-hidden="true">✓</span>Понятная цена</li>
                 <li><span aria-hidden="true">✓</span>Карта и маршрут</li>
@@ -63,6 +124,26 @@ try {
         <a href="#marketplace" data-reveal><span class="service-ribbon__icon" aria-hidden="true">⌖</span><span><strong>Найти автомат</strong><small>По адресу или рядом с вами</small></span><span aria-hidden="true">→</span></a>
         <a href="#water-journey" data-reveal data-reveal-delay="1"><span class="service-ribbon__icon" aria-hidden="true">≈</span><span><strong>Узнать о воде</strong><small>Путь от скважины до бутылки</small></span><span aria-hidden="true">→</span></a>
         <a href="/documents.php" data-reveal data-reveal-delay="2"><span class="service-ribbon__icon" aria-hidden="true">✓</span><span><strong>Проверить документы</strong><small>Оригиналы опубликованных материалов</small></span><span aria-hidden="true">→</span></a>
+    </div>
+</section>
+
+<section id="marketplace" class="section map-section">
+    <div class="container map-section__heading" data-reveal>
+        <div>
+            <p class="eyebrow eyebrow--blue">Удобный поиск по карте</p>
+            <h2>Найдите автомат рядом</h2>
+        </div>
+        <div class="map-section__intro"><p>Введите улицу или номер автомата. На карте можно построить маршрут.</p><div><span>⌖ Поиск рядом</span><span>☆ Избранное</span><span>→ Маршрут</span></div></div>
+    </div>
+    <div class="map-shell" data-reveal>
+        <div id="map" class="external-placeholder" data-yandex-map-loader="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;csp=202512&amp;apikey=53339f0b-4eb7-462c-b883-141779b77ade" data-map-code="/list_box_layout.js?v=<?= $assetVersion ?>">
+            <div class="external-placeholder__inner">
+                <span class="map-pin" aria-hidden="true"></span>
+                <h3>Интерактивная карта точек</h3>
+                <p>Яндекс.Карты загрузятся только после нажатия и получат технические данные соединения.</p>
+                <button type="button" class="external-placeholder__button" data-load-external>Открыть карту</button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -128,27 +209,7 @@ try {
     </div>
 </section>
 
-<section id="marketplace" class="section map-section">
-    <div class="container map-section__heading" data-reveal>
-        <div>
-            <p class="eyebrow eyebrow--blue">Удобный поиск по карте</p>
-            <h2>Найдите автомат рядом</h2>
-        </div>
-        <div class="map-section__intro"><p>Введите улицу или номер автомата. На карте можно построить маршрут.</p><div><span>⌖ Поиск рядом</span><span>☆ Избранное</span><span>→ Маршрут</span></div></div>
-    </div>
-    <div class="map-shell" data-reveal>
-        <div id="map" class="external-placeholder" data-yandex-map-loader="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;csp=202512&amp;apikey=53339f0b-4eb7-462c-b883-141779b77ade" data-map-code="/list_box_layout.js?v=<?= $assetVersion ?>">
-            <div class="external-placeholder__inner">
-                <span class="map-pin" aria-hidden="true"></span>
-                <h3>Интерактивная карта точек</h3>
-                <p>Яндекс.Карты загрузятся только после нажатия и получат технические данные соединения.</p>
-                <button type="button" class="external-placeholder__button" data-load-external>Открыть карту</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section--soft" aria-labelledby="how-title">
+<section id="how-it-works" class="section section--soft" aria-labelledby="how-title">
     <div class="container">
         <div class="section-heading" data-reveal>
             <p class="eyebrow eyebrow--blue">Покупка за пару минут</p>
@@ -156,9 +217,9 @@ try {
         </div>
         <ol class="steps-grid">
             <li data-reveal><span class="step-number">1</span><h3>Поставьте бутыль</h3><p>Установите чистую тару в обозначенное место.</p></li>
-            <li data-reveal data-reveal-delay="1"><span class="step-number">2</span><h3>Внесите оплату</h3><p>Проверьте цену на автомате и внесите необходимую сумму.</p></li>
+            <li data-reveal data-reveal-delay="1"><span class="step-number">2</span><h3>Следуйте подсказкам</h3><p>Проверьте цену и выполните действия, указанные на экране автомата.</p></li>
             <li data-reveal data-reveal-delay="2"><span class="step-number">3</span><h3>Нажмите «Пуск»</h3><p>За одно нажатие автомат выдаёт не более пяти литров.</p></li>
-            <li data-reveal data-reveal-delay="3"><span class="step-number">4</span><h3>Завершите покупку</h3><p>Остановите выдачу, заберите бутыль и сдачу из лотка.</p></li>
+            <li data-reveal data-reveal-delay="3"><span class="step-number">4</span><h3>Завершите набор</h3><p>Остановите выдачу и заберите бутыль.</p></li>
         </ol>
     </div>
 </section>
@@ -185,10 +246,20 @@ try {
     </div>
 </section>
 
-<section id="cost" class="price-section">
-    <div class="container price-card" data-reveal>
-        <div><p class="eyebrow">Понятная стоимость</p><h2>10 рублей за литр</h2><p>Набирайте столько, сколько нужно вашей семье.</p></div>
-        <div class="price-card__actions"><a class="button button--white" href="#marketplace">Найти автомат</a><a class="price-phone" href="tel:+78124099033">+7 (812) 409-90-33</a></div>
+<section id="faq" class="section faq-section" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+        <div class="faq-intro" data-reveal>
+            <p class="eyebrow eyebrow--blue">Короткие ответы</p>
+            <h2 id="faq-title">Частые вопросы</h2>
+            <p>Основная информация о поиске точки, таре, документах и обращениях.</p>
+            <a class="button button--outline" href="/contact.php">Задать свой вопрос</a>
+        </div>
+        <div class="faq-list">
+            <details data-reveal><summary>Как найти ближайший автомат?</summary><p>Введите улицу или номер автомата в поиске на главной странице либо используйте кнопку «Рядом со мной» на карте.</p></details>
+            <details data-reveal data-reveal-delay="1"><summary>Можно ли использовать свою тару?</summary><p>Да, для набора воды можно использовать собственную чистую тару.</p></details>
+            <details data-reveal data-reveal-delay="2"><summary>Где посмотреть документы на воду?</summary><p>Опубликованные страницы лабораторного протокола и декларация размещены в разделе «Документы».</p></details>
+            <details data-reveal><summary>Как сообщить о проблеме с автоматом?</summary><p>Укажите номер или адрес автомата, дату, время и описание ситуации в форме обращения или позвоните по телефону, указанному на сайте.</p></details>
+        </div>
     </div>
 </section>
 

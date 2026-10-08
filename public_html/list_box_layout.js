@@ -22,6 +22,11 @@
     function distanceLabel(value) {
         return value < 1 ? Math.round(value * 1000) + ' м' : value.toFixed(1).replace('.', ',') + ' км';
     }
+    function dataDateLabel(value) {
+        var parsed = value ? new Date(value) : null;
+        if (!parsed || Number.isNaN(parsed.getTime())) return 'Дата обновления не указана';
+        return 'Данные на ' + new Intl.DateTimeFormat('ru-RU', {day:'2-digit',month:'2-digit',year:'numeric'}).format(parsed);
+    }
     var favoriteKey = 'kioskvoda-favorite-kiosks-v1';
     function favoriteIds() {
         try { var value=JSON.parse(localStorage.getItem(favoriteKey)||'[]'); return Array.isArray(value)?value.map(String):[]; } catch(error) { return []; }
@@ -41,7 +46,7 @@
         var userPoint = null;
         container.className = 'sales-map';
         container.innerHTML =
-            '<div class="map-appbar"><div><span class="map-appbar__mark" aria-hidden="true">⌖</span><span><strong>Карта Киоскводы</strong><small>Выберите удобную точку</small></span></div><span class="map-appbar__live"><i aria-hidden="true"></i>Данные актуальны</span></div>' +
+            '<div class="map-appbar"><div><span class="map-appbar__mark" aria-hidden="true">⌖</span><span><strong>Карта Киоскводы</strong><small>Выберите удобную точку</small></span></div><span class="map-appbar__live"><i aria-hidden="true"></i>'+escapeHtml(dataDateLabel(data.generated_at))+'</span></div>' +
             '<div class="map-toolbar">' +
                 '<label>Адрес, улица или номер<div class="map-search-field"><span aria-hidden="true">⌕</span><input type="search" id="map-search" placeholder="Например: улица Дыбенко" autocomplete="street-address"></div></label>' +
                 '<label>Город или район<select id="map-area"><option value="">Все места</option></select></label>' +

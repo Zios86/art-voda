@@ -135,6 +135,34 @@
         }
         document.querySelectorAll('[data-nearest-kiosk]').forEach(function (button) { button.addEventListener('click', openNearest); });
 
+        var heroSearch = document.querySelector('[data-hero-kiosk-search]');
+        if (heroSearch) {
+            heroSearch.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var query = document.getElementById('hero-kiosk-query');
+                var note = document.getElementById('hero-search-note');
+                var value = query ? query.value.trim() : '';
+                if (!value) { if (query) query.focus(); return; }
+
+                var mapSection = document.getElementById('marketplace');
+                if (mapSection) mapSection.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+                if (note) note.textContent = 'Загружаем карту и ищем адрес…';
+
+                function startAddressSearch() {
+                    var mapSearch = document.getElementById('map-search');
+                    if (!mapSearch || !window.kioskvodaMap) return;
+                    mapSearch.value = value;
+                    window.kioskvodaMap.findAddress();
+                    if (note) note.textContent = 'Результаты показаны на карте ниже.';
+                }
+
+                if (window.kioskvodaMap) { startAddressSearch(); return; }
+                var loadButton = document.querySelector('#map [data-load-external]');
+                if (loadButton) loadButton.click();
+                document.addEventListener('kioskvoda-map-ready', startAddressSearch, {once: true});
+            });
+        }
+
         document.querySelectorAll('[data-install-app]').forEach(function (button) {
             var isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
             var isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;

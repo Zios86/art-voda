@@ -41,7 +41,7 @@ if (is_file($cachePath) && (time() - (int) filemtime($cachePath)) <= 60) {
 if ($body === '') {
     try {
         $rows = app_pdo()->query("SELECT id,machine_number,address,area,latitude,longitude,schedule,metro,landmark,photo_url,updated_at FROM kiosks WHERE status <> 'hidden' ORDER BY machine_number IS NULL,machine_number,address")->fetchAll();
-        $body = json_encode(['version' => 2, 'source' => 'database', 'kiosks' => $rows], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
+        $body = json_encode(['version' => 2, 'generated_at' => date(DATE_ATOM), 'source' => 'database', 'kiosks' => $rows], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
         $temporary = $cachePath . '.' . bin2hex(random_bytes(6)) . '.tmp';
         if (file_put_contents($temporary, $body, LOCK_EX) !== false) {
             @chmod($temporary, 0600);
