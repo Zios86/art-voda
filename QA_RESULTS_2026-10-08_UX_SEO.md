@@ -33,6 +33,17 @@
 
 Статус: готово к GitHub Actions и smoke-тесту Open Server; production-готовность не подтверждена.
 
+## GitHub Actions
+
+Run №18 завершён успешно 8 октября 2026 года. Прошли четыре задания:
+
+- Syntax and data validation;
+- MySQL schema and transaction smoke test;
+- Secret scan;
+- CodeQL JavaScript.
+
+Это подтверждает автоматические проверки, но не заменяет браузерный smoke-тест, Open Server и тестовый Timeweb.
+
 ## Релизный архив
 
 - файл: `kioskvody_timeweb_2026-10-08_v18-rc3.zip`;
